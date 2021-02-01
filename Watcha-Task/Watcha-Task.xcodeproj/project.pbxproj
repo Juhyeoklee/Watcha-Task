@@ -56,15 +56,71 @@
 		A22DE83025C7E9CB00F5B264 /* Watcha-Task */ = {
 			isa = PBXGroup;
 			children = (
-				A22DE83125C7E9CB00F5B264 /* AppDelegate.swift */,
-				A22DE83325C7E9CB00F5B264 /* SceneDelegate.swift */,
-				A22DE83525C7E9CB00F5B264 /* ViewController.swift */,
-				A22DE83725C7E9CB00F5B264 /* Main.storyboard */,
-				A22DE83A25C7E9CC00F5B264 /* Assets.xcassets */,
-				A22DE83C25C7E9CC00F5B264 /* LaunchScreen.storyboard */,
+				A22DE84725C7EFAA00F5B264 /* Resource */,
+				A22DE84625C7EF9B00F5B264 /* Source */,
 				A22DE83F25C7E9CC00F5B264 /* Info.plist */,
 			);
 			path = "Watcha-Task";
+			sourceTree = "<group>";
+		};
+		A22DE84625C7EF9B00F5B264 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				A22DE84B25C8728000F5B264 /* Extensions */,
+				A22DE84A25C8727100F5B264 /* Cells */,
+				A22DE84925C7F00000F5B264 /* VCs */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		A22DE84725C7EFAA00F5B264 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				A22DE84C25C872A300F5B264 /* Apps */,
+				A22DE83A25C7E9CC00F5B264 /* Assets.xcassets */,
+				A22DE84825C7EFE200F5B264 /* Storyboards */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		A22DE84825C7EFE200F5B264 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A22DE83725C7E9CB00F5B264 /* Main.storyboard */,
+				A22DE83C25C7E9CC00F5B264 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		A22DE84925C7F00000F5B264 /* VCs */ = {
+			isa = PBXGroup;
+			children = (
+				A22DE83525C7E9CB00F5B264 /* ViewController.swift */,
+			);
+			path = VCs;
+			sourceTree = "<group>";
+		};
+		A22DE84A25C8727100F5B264 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		A22DE84B25C8728000F5B264 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A22DE84C25C872A300F5B264 /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				A22DE83125C7E9CB00F5B264 /* AppDelegate.swift */,
+				A22DE83325C7E9CB00F5B264 /* SceneDelegate.swift */,
+			);
+			path = Apps;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
