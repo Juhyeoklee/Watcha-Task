@@ -10,10 +10,13 @@
 		35363A85F372122159CCB58C /* Pods_Watcha_Task.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 438AF15C99EA7A81671B60AB /* Pods_Watcha_Task.framework */; };
 		A22DE83225C7E9CB00F5B264 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DE83125C7E9CB00F5B264 /* AppDelegate.swift */; };
 		A22DE83425C7E9CB00F5B264 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DE83325C7E9CB00F5B264 /* SceneDelegate.swift */; };
-		A22DE83625C7E9CB00F5B264 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DE83525C7E9CB00F5B264 /* ViewController.swift */; };
-		A22DE83925C7E9CB00F5B264 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A22DE83725C7E9CB00F5B264 /* Main.storyboard */; };
 		A22DE83B25C7E9CC00F5B264 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A22DE83A25C7E9CC00F5B264 /* Assets.xcassets */; };
 		A22DE83E25C7E9CC00F5B264 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A22DE83C25C7E9CC00F5B264 /* LaunchScreen.storyboard */; };
+		A22DE86425C881D800F5B264 /* GiphyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DE86325C881D800F5B264 /* GiphyTabBarController.swift */; };
+		A22DE86725C881FA00F5B264 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A22DE86625C881FA00F5B264 /* Search.storyboard */; };
+		A22DE86A25C8821E00F5B264 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DE86925C8821E00F5B264 /* SearchVC.swift */; };
+		A22DE86D25C8830F00F5B264 /* Favorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A22DE86C25C8830F00F5B264 /* Favorites.storyboard */; };
+		A22DE87025C8832000F5B264 /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DE86F25C8832000F5B264 /* FavoritesVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,11 +25,14 @@
 		A22DE82E25C7E9CB00F5B264 /* Watcha-Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Watcha-Task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A22DE83125C7E9CB00F5B264 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A22DE83325C7E9CB00F5B264 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A22DE83525C7E9CB00F5B264 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A22DE83825C7E9CB00F5B264 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A22DE83A25C7E9CC00F5B264 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A22DE83D25C7E9CC00F5B264 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A22DE83F25C7E9CC00F5B264 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A22DE83F25C7E9CC00F5B264 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Watcha-Task/Resource/Apps/Info.plist"; sourceTree = SOURCE_ROOT; };
+		A22DE86325C881D800F5B264 /* GiphyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyTabBarController.swift; sourceTree = "<group>"; };
+		A22DE86625C881FA00F5B264 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		A22DE86925C8821E00F5B264 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		A22DE86C25C8830F00F5B264 /* Favorites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favorites.storyboard; sourceTree = "<group>"; };
+		A22DE86F25C8832000F5B264 /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
 		EBD3D52B76689EE277B530FD /* Pods-Watcha-Task.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Watcha-Task.debug.xcconfig"; path = "Target Support Files/Pods-Watcha-Task/Pods-Watcha-Task.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,7 +79,6 @@
 			children = (
 				A22DE84725C7EFAA00F5B264 /* Resource */,
 				A22DE84625C7EF9B00F5B264 /* Source */,
-				A22DE83F25C7E9CC00F5B264 /* Info.plist */,
 			);
 			path = "Watcha-Task";
 			sourceTree = "<group>";
@@ -81,8 +86,6 @@
 		A22DE84625C7EF9B00F5B264 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				A22DE84B25C8728000F5B264 /* Extensions */,
-				A22DE84A25C8727100F5B264 /* Cells */,
 				A22DE84925C7F00000F5B264 /* VCs */,
 			);
 			path = Source;
@@ -101,8 +104,9 @@
 		A22DE84825C7EFE200F5B264 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				A22DE83725C7E9CB00F5B264 /* Main.storyboard */,
+				A22DE86625C881FA00F5B264 /* Search.storyboard */,
 				A22DE83C25C7E9CC00F5B264 /* LaunchScreen.storyboard */,
+				A22DE86C25C8830F00F5B264 /* Favorites.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -110,29 +114,18 @@
 		A22DE84925C7F00000F5B264 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
-				A22DE83525C7E9CB00F5B264 /* ViewController.swift */,
+				A22DE86325C881D800F5B264 /* GiphyTabBarController.swift */,
+				A22DE86925C8821E00F5B264 /* SearchVC.swift */,
+				A22DE86F25C8832000F5B264 /* FavoritesVC.swift */,
 			);
 			path = VCs;
-			sourceTree = "<group>";
-		};
-		A22DE84A25C8727100F5B264 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		A22DE84B25C8728000F5B264 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		A22DE84C25C872A300F5B264 /* Apps */ = {
 			isa = PBXGroup;
 			children = (
 				A22DE83125C7E9CB00F5B264 /* AppDelegate.swift */,
+				A22DE83F25C7E9CC00F5B264 /* Info.plist */,
 				A22DE83325C7E9CB00F5B264 /* SceneDelegate.swift */,
 			);
 			path = Apps;
@@ -208,7 +201,8 @@
 			files = (
 				A22DE83E25C7E9CC00F5B264 /* LaunchScreen.storyboard in Resources */,
 				A22DE83B25C7E9CC00F5B264 /* Assets.xcassets in Resources */,
-				A22DE83925C7E9CB00F5B264 /* Main.storyboard in Resources */,
+				A22DE86725C881FA00F5B264 /* Search.storyboard in Resources */,
+				A22DE86D25C8830F00F5B264 /* Favorites.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,23 +255,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A22DE83625C7E9CB00F5B264 /* ViewController.swift in Sources */,
+				A22DE86A25C8821E00F5B264 /* SearchVC.swift in Sources */,
+				A22DE87025C8832000F5B264 /* FavoritesVC.swift in Sources */,
 				A22DE83225C7E9CB00F5B264 /* AppDelegate.swift in Sources */,
 				A22DE83425C7E9CB00F5B264 /* SceneDelegate.swift in Sources */,
+				A22DE86425C881D800F5B264 /* GiphyTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A22DE83725C7E9CB00F5B264 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A22DE83825C7E9CB00F5B264 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A22DE83C25C7E9CC00F5B264 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -413,7 +401,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HAWSBW2KW5;
-				INFOPLIST_FILE = "Watcha-Task/Info.plist";
+				INFOPLIST_FILE = "Watcha-Task/Resource/Apps/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -421,7 +409,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Juhyeoklee.Watcha-Task";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -433,7 +421,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HAWSBW2KW5;
-				INFOPLIST_FILE = "Watcha-Task/Info.plist";
+				INFOPLIST_FILE = "Watcha-Task/Resource/Apps/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -441,7 +429,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Juhyeoklee.Watcha-Task";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
