@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35363A85F372122159CCB58C /* Pods_Watcha_Task.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 438AF15C99EA7A81671B60AB /* Pods_Watcha_Task.framework */; };
 		A22DE83225C7E9CB00F5B264 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DE83125C7E9CB00F5B264 /* AppDelegate.swift */; };
 		A22DE83425C7E9CB00F5B264 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DE83325C7E9CB00F5B264 /* SceneDelegate.swift */; };
 		A22DE83625C7E9CB00F5B264 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DE83525C7E9CB00F5B264 /* ViewController.swift */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		068B8FF54160F20F46CAC2B0 /* Pods-Watcha-Task.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Watcha-Task.release.xcconfig"; path = "Target Support Files/Pods-Watcha-Task/Pods-Watcha-Task.release.xcconfig"; sourceTree = "<group>"; };
+		438AF15C99EA7A81671B60AB /* Pods_Watcha_Task.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Watcha_Task.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A22DE82E25C7E9CB00F5B264 /* Watcha-Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Watcha-Task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A22DE83125C7E9CB00F5B264 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A22DE83325C7E9CB00F5B264 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		A22DE83A25C7E9CC00F5B264 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A22DE83D25C7E9CC00F5B264 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A22DE83F25C7E9CC00F5B264 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBD3D52B76689EE277B530FD /* Pods-Watcha-Task.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Watcha-Task.debug.xcconfig"; path = "Target Support Files/Pods-Watcha-Task/Pods-Watcha-Task.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35363A85F372122159CCB58C /* Pods_Watcha_Task.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6575A97C53845C43196DD67A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				438AF15C99EA7A81671B60AB /* Pods_Watcha_Task.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A22DE82525C7E9CB00F5B264 = {
 			isa = PBXGroup;
 			children = (
 				A22DE83025C7E9CB00F5B264 /* Watcha-Task */,
 				A22DE82F25C7E9CB00F5B264 /* Products */,
+				B1194D97784BE749908B8877 /* Pods */,
+				6575A97C53845C43196DD67A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,6 +138,15 @@
 			path = Apps;
 			sourceTree = "<group>";
 		};
+		B1194D97784BE749908B8877 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EBD3D52B76689EE277B530FD /* Pods-Watcha-Task.debug.xcconfig */,
+				068B8FF54160F20F46CAC2B0 /* Pods-Watcha-Task.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -130,9 +154,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A22DE84225C7E9CC00F5B264 /* Build configuration list for PBXNativeTarget "Watcha-Task" */;
 			buildPhases = (
+				C7FD2203581E191EE1DD0FDA /* [CP] Check Pods Manifest.lock */,
 				A22DE82A25C7E9CB00F5B264 /* Sources */,
 				A22DE82B25C7E9CB00F5B264 /* Frameworks */,
 				A22DE82C25C7E9CB00F5B264 /* Resources */,
+				B290382474D83F76C85E232E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -187,6 +213,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B290382474D83F76C85E232E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Watcha-Task/Pods-Watcha-Task-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Watcha-Task/Pods-Watcha-Task-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Watcha-Task/Pods-Watcha-Task-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C7FD2203581E191EE1DD0FDA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Watcha-Task-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A22DE82A25C7E9CB00F5B264 /* Sources */ = {
@@ -272,7 +340,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -327,7 +395,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -339,6 +407,7 @@
 		};
 		A22DE84325C7E9CC00F5B264 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBD3D52B76689EE277B530FD /* Pods-Watcha-Task.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -358,6 +427,7 @@
 		};
 		A22DE84425C7E9CC00F5B264 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 068B8FF54160F20F46CAC2B0 /* Pods-Watcha-Task.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
