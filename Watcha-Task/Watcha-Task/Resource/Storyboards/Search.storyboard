@@ -43,6 +43,10 @@
                             <constraint firstItem="bNC-lB-7fK" firstAttribute="leading" secondItem="Myk-64-XCd" secondAttribute="trailing" id="xxX-BP-DsP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchButton" destination="bNC-lB-7fK" id="qJW-tN-1Dr"/>
+                        <outlet property="searchTextField" destination="Myk-64-XCd" id="3PC-NX-xQ9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6o1-Bn-UpM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

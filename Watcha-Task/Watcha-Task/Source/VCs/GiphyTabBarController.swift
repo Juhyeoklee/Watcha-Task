@@ -23,14 +23,14 @@ class GiphyTabBarController: UITabBarController {
             return
         }
         searchVC.title = "Search"
-        searchVC.tabBarItem.image = UIImage(systemName: "")
+        searchVC.tabBarItem.image = UIImage(systemName: "magnifyingglass")
         
         guard let favoritesVC = UIStoryboard(name: "Favorites", bundle: nil)
                 .instantiateViewController(identifier: "FavoritesVC") as? FavoritesVC else {
             return
         }
         favoritesVC.title = "Favorites"
-        favoritesVC.tabBarItem.image = UIImage(systemName: "")
+        favoritesVC.tabBarItem.image = UIImage(systemName: "heart.fill")
         
         self.viewControllers = [searchVC, favoritesVC]
     }
