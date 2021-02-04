@@ -22,6 +22,8 @@
 		A26CBD0625CBD72F00B1E376 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26CBD0525CBD72F00B1E376 /* UIImageView+Extensions.swift */; };
 		A26CBD0B25CBDA7600B1E376 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26CBD0A25CBDA7600B1E376 /* UserDefaultKeys.swift */; };
 		A26CBD0E25CBDBBF00B1E376 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26CBD0D25CBDBBF00B1E376 /* APIKeys.swift */; };
+		A26CBD1225CBE50900B1E376 /* GIFImageCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26CBD1125CBE50900B1E376 /* GIFImageCVCell.swift */; };
+		A26CBD1D25CC4E8E00B1E376 /* WaterFallCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26CBD1C25CC4E8E00B1E376 /* WaterFallCollectionViewLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		A26CBD0525CBD72F00B1E376 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		A26CBD0A25CBDA7600B1E376 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		A26CBD0D25CBDBBF00B1E376 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		A26CBD1125CBE50900B1E376 /* GIFImageCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFImageCVCell.swift; sourceTree = "<group>"; };
+		A26CBD1C25CC4E8E00B1E376 /* WaterFallCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterFallCollectionViewLayout.swift; sourceTree = "<group>"; };
 		EBD3D52B76689EE277B530FD /* Pods-Watcha-Task.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Watcha-Task.debug.xcconfig"; path = "Target Support Files/Pods-Watcha-Task/Pods-Watcha-Task.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,7 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				A22DE84725C7EFAA00F5B264 /* Resource */,
-				A22DE83A25C7E9CC00F5B264 /* Assets.xcassets */,
 				A22DE84625C7EF9B00F5B264 /* Source */,
 			);
 			path = "Watcha-Task";
@@ -97,7 +100,8 @@
 		A22DE84625C7EF9B00F5B264 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				A26CBCFB25CBD63C00B1E376 /* Extensions */,
+				A26CBD1A25CC4E1A00B1E376 /* CustomViews */,
+				A26CBD1025CBE46500B1E376 /* Cells */,
 				A22DE84925C7F00000F5B264 /* VCs */,
 			);
 			path = Source;
@@ -107,8 +111,10 @@
 			isa = PBXGroup;
 			children = (
 				A22DE84C25C872A300F5B264 /* Apps */,
+				A26CBCFB25CBD63C00B1E376 /* Extensions */,
 				A22DE84825C7EFE200F5B264 /* Storyboards */,
 				A26CBD0925CBDA5400B1E376 /* Support */,
+				A22DE83A25C7E9CC00F5B264 /* Assets.xcassets */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -160,6 +166,22 @@
 				A26CBD0D25CBDBBF00B1E376 /* APIKeys.swift */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		A26CBD1025CBE46500B1E376 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A26CBD1125CBE50900B1E376 /* GIFImageCVCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		A26CBD1A25CC4E1A00B1E376 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				A26CBD1C25CC4E8E00B1E376 /* WaterFallCollectionViewLayout.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		B1194D97784BE749908B8877 /* Pods */ = {
@@ -287,12 +309,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A26CBD0225CBD6BF00B1E376 /* UITextField+Extensions.swift in Sources */,
+				A26CBD1D25CC4E8E00B1E376 /* WaterFallCollectionViewLayout.swift in Sources */,
 				A26CBCFD25CBD66800B1E376 /* UIView+Extensions.swift in Sources */,
 				A22DE86A25C8821E00F5B264 /* SearchVC.swift in Sources */,
 				A22DE87025C8832000F5B264 /* FavoritesVC.swift in Sources */,
 				A22DE83225C7E9CB00F5B264 /* AppDelegate.swift in Sources */,
 				A22DE83425C7E9CB00F5B264 /* SceneDelegate.swift in Sources */,
 				A26CBD0E25CBDBBF00B1E376 /* APIKeys.swift in Sources */,
+				A26CBD1225CBE50900B1E376 /* GIFImageCVCell.swift in Sources */,
 				A26CBD0625CBD72F00B1E376 /* UIImageView+Extensions.swift in Sources */,
 				A22DE86425C881D800F5B264 /* GiphyTabBarController.swift in Sources */,
 				A26CBD0B25CBDA7600B1E376 /* UserDefaultKeys.swift in Sources */,
