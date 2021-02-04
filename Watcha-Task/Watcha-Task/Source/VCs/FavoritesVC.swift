@@ -9,10 +9,12 @@ import UIKit
 
 class FavoritesVC: UIViewController {
 
+    // MARK:- LifeCycle Method
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
 
+    
 }
