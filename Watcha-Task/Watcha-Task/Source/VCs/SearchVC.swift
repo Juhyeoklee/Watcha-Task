@@ -29,7 +29,7 @@ class SearchVC: UIViewController {
     let itemSpacing: CGFloat = 5
     let horizontalSpacing: CGFloat = 5
     let verticalSpacing: CGFloat = 10
-    var gifImageSizes: [CGFloat] = [100, 200, 50, 30, 90, 100, 100, 200, 300, 150, 200, 300, 100, 200, 300]
+    var gifImageSizes: [CGFloat] = [100, 200, 50, 30, 90, 100, 100, 200, 300, 150, 90, 100, 100, 200, 300, 150]
     
     
     // MARK:- LifeCycle Method
@@ -55,7 +55,7 @@ class SearchVC: UIViewController {
 // MARK:- UICollectionViewDataSource Extensions
 extension SearchVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return gifImageSizes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -76,7 +76,24 @@ extension SearchVC: UICollectionViewDelegate {
             self.navigationController?.pushViewController(dvc, animated: true)
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.item == gifImageSizes.count - 1 {
+            
+        }
+        
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if searchResultCollectionView.contentOffset.y + searchResultCollectionView.bounds.height == searchResultCollectionView.contentSize.height {
+            
+            gifImageSizes.append(contentsOf: [100, 100, 100, 200, 100])
+            searchResultCollectionView.reloadData()
+            
+        }
+    }
 }
+
+
 // MARK:- WaterFallCollectionViewLayoutDelegate Extensions
 extension SearchVC: WaterFallCollectionViewLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForImageAtIndexPath indexPath: IndexPath) -> CGFloat {

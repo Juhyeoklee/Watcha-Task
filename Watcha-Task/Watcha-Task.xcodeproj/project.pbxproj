@@ -26,6 +26,7 @@
 		A26CBD1D25CC4E8E00B1E376 /* WaterFallCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26CBD1C25CC4E8E00B1E376 /* WaterFallCollectionViewLayout.swift */; };
 		A28A265825CD5CB20091F552 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A28A265725CD5CB20091F552 /* Detail.storyboard */; };
 		A28A265B25CD5CFA0091F552 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A265A25CD5CFA0091F552 /* DetailVC.swift */; };
+		A28A266725CD653F0091F552 /* ProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A266625CD653F0091F552 /* ProfileHeaderCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		A26CBD1C25CC4E8E00B1E376 /* WaterFallCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterFallCollectionViewLayout.swift; sourceTree = "<group>"; };
 		A28A265725CD5CB20091F552 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		A28A265A25CD5CFA0091F552 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		A28A266625CD653F0091F552 /* ProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		EBD3D52B76689EE277B530FD /* Pods-Watcha-Task.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Watcha-Task.debug.xcconfig"; path = "Target Support Files/Pods-Watcha-Task/Pods-Watcha-Task.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				A26CBD1C25CC4E8E00B1E376 /* WaterFallCollectionViewLayout.swift */,
+				A28A266625CD653F0091F552 /* ProfileHeaderCollectionReusableView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				A22DE83425C7E9CB00F5B264 /* SceneDelegate.swift in Sources */,
 				A26CBD0E25CBDBBF00B1E376 /* APIKeys.swift in Sources */,
 				A26CBD1225CBE50900B1E376 /* GIFImageCVCell.swift in Sources */,
+				A28A266725CD653F0091F552 /* ProfileHeaderCollectionReusableView.swift in Sources */,
 				A26CBD0625CBD72F00B1E376 /* UIImageView+Extensions.swift in Sources */,
 				A22DE86425C881D800F5B264 /* GiphyTabBarController.swift in Sources */,
 				A26CBD0B25CBDA7600B1E376 /* UserDefaultKeys.swift in Sources */,

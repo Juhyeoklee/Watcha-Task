@@ -16,16 +16,63 @@
                     <view key="view" contentMode="scaleToFill" id="rar-sC-47Y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X52-lF-GkH">
+                                <rect key="frame" x="20" y="261" width="374" height="374"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="X52-lF-GkH" secondAttribute="height" multiplier="1:1" id="A5Q-Lf-gA4"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBf-Wh-3Tm">
+                                <rect key="frame" x="20" y="636" width="62" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zL-qM-GM0">
+                                <rect key="frame" x="20" y="668" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WN8-PT-NqO">
+                                <rect key="frame" x="341" y="636" width="53" height="53"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="WN8-PT-NqO" secondAttribute="height" multiplier="1:1" id="Ccr-1l-2dq"/>
+                                </constraints>
+                                <state key="normal" image="heart" catalog="system"/>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vhx-pR-yrk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="X52-lF-GkH" firstAttribute="centerY" secondItem="rar-sC-47Y" secondAttribute="centerY" id="3td-wU-l2r"/>
+                            <constraint firstItem="WN8-PT-NqO" firstAttribute="trailing" secondItem="X52-lF-GkH" secondAttribute="trailing" id="4jJ-Ff-LfD"/>
+                            <constraint firstItem="X52-lF-GkH" firstAttribute="leading" secondItem="vhx-pR-yrk" secondAttribute="leading" constant="20" id="4of-3L-fKI"/>
+                            <constraint firstItem="2zL-qM-GM0" firstAttribute="top" secondItem="CBf-Wh-3Tm" secondAttribute="bottom" id="7jo-BY-dNO"/>
+                            <constraint firstItem="X52-lF-GkH" firstAttribute="centerX" secondItem="rar-sC-47Y" secondAttribute="centerX" id="OdK-FD-YlJ"/>
+                            <constraint firstItem="2zL-qM-GM0" firstAttribute="leading" secondItem="CBf-Wh-3Tm" secondAttribute="leading" id="e9R-mM-nOk"/>
+                            <constraint firstItem="WN8-PT-NqO" firstAttribute="top" secondItem="CBf-Wh-3Tm" secondAttribute="top" id="ebX-EP-9yR"/>
+                            <constraint firstItem="vhx-pR-yrk" firstAttribute="trailing" secondItem="X52-lF-GkH" secondAttribute="trailing" constant="20" id="hPH-hr-8Rh"/>
+                            <constraint firstItem="CBf-Wh-3Tm" firstAttribute="top" secondItem="X52-lF-GkH" secondAttribute="bottom" constant="1" id="iul-rE-UhJ"/>
+                            <constraint firstItem="CBf-Wh-3Tm" firstAttribute="leading" secondItem="X52-lF-GkH" secondAttribute="leading" id="jix-bP-49w"/>
+                            <constraint firstItem="WN8-PT-NqO" firstAttribute="bottom" secondItem="2zL-qM-GM0" secondAttribute="bottom" id="sJb-85-KxY"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="displayNameLabel" destination="CBf-Wh-3Tm" id="fWI-zY-cW1"/>
+                        <outlet property="gifImageView" destination="X52-lF-GkH" id="niC-xa-XTf"/>
+                        <outlet property="heartButton" destination="WN8-PT-NqO" id="LSJ-9k-P9h"/>
+                        <outlet property="userNameLabel" destination="2zL-qM-GM0" id="YDk-3Y-nz3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xge-s0-VZA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-42" y="53"/>
+            <point key="canvasLocation" x="-42.028985507246382" y="52.901785714285715"/>
         </scene>
     </scenes>
     <resources>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
