@@ -30,6 +30,9 @@
                                     <constraint firstAttribute="width" constant="45" id="ZVZ-SP-gaY"/>
                                 </constraints>
                                 <state key="normal" image="magnifyingglass" catalog="system"/>
+                                <connections>
+                                    <action selector="touchUpSearchButton:" destination="Uhn-uh-5dV" eventType="touchUpInside" id="d4l-0a-Iil"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hsP-Ar-MyU">
                                 <rect key="frame" x="0.0" y="111" width="375" height="667"/>

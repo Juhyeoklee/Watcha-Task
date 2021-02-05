@@ -41,6 +41,9 @@ class WaterFallCollectionViewLayout: UICollectionViewLayout {
             return
         }
         
+        if cache.isEmpty {
+            contentHeight = 0
+        }
         // 2
         let columnWidth = contentWidth / CGFloat(numberOfColumns)
         
@@ -70,9 +73,11 @@ class WaterFallCollectionViewLayout: UICollectionViewLayout {
             
             // 6
             contentHeight = max(contentHeight, frame.maxY)
+            
             yOffset[column] = yOffset[column] + height
             column = column < (numberOfColumns - 1) ? (column + 1) : 0
         }
+        
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
@@ -89,5 +94,9 @@ class WaterFallCollectionViewLayout: UICollectionViewLayout {
     
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return cache[indexPath.item]
+    }
+    
+    public func removeAllCache() {
+        self.cache.removeAll()
     }
 }
