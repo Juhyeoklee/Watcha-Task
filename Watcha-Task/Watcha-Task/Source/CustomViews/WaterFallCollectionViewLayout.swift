@@ -37,10 +37,13 @@ class WaterFallCollectionViewLayout: UICollectionViewLayout {
     
     
     override func prepare() {
+        
+        // 1
         guard cache.isEmpty == true, let collectionView = collectionView else {
             return
         }
         
+        // 2
         let columnWidth = contentWidth / CGFloat(numberOfColumns)
         
         var xOffset = [CGFloat]()
@@ -51,19 +54,23 @@ class WaterFallCollectionViewLayout: UICollectionViewLayout {
         var column = 0
         var yOffset = [CGFloat](repeating: 0, count: numberOfColumns)
         
+        // 3
         for item in 0..<collectionView.numberOfItems(inSection: 0) {
             let indexPath = IndexPath(item: item, section: 0)
             
+            // 4
             let imageHeight = delegate.collectionView(collectionView, heightForImageAtIndexPath: indexPath)
             let height = cellPadding * 2 + imageHeight
             let frame = CGRect(x: xOffset[column], y: yOffset[column], width: columnWidth, height: height)
             
             let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
             
+            // 5
             let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
             attributes.frame = insetFrame
             cache.append(attributes)
             
+            // 6
             contentHeight = max(contentHeight, frame.maxY)
             yOffset[column] = yOffset[column] + height
             column = column < (numberOfColumns - 1) ? (column + 1) : 0

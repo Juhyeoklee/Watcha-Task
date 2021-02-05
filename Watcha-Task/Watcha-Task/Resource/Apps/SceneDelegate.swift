@@ -21,7 +21,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         let navi: UINavigationController = {
             let naviVC = UINavigationController(rootViewController: GiphyTabBarController())
-            naviVC.isNavigationBarHidden = true
             return naviVC
         }()
         

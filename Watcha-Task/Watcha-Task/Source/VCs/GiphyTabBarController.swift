@@ -16,8 +16,15 @@ class GiphyTabBarController: UITabBarController {
         setTabs()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+    }
+    
     // MARK:- Member Method
     private func setTabs() {
+        
         guard let searchVC = UIStoryboard(name: "Search", bundle: nil)
                 .instantiateViewController(identifier: "SearchVC") as? SearchVC else {
             return

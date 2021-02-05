@@ -20,7 +20,6 @@ class GIFImageCVCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         initLayout()
-        print(#function)
     }
     
     required init?(coder: NSCoder) {

@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,13 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Myk-64-XCd">
-                                <rect key="frame" x="16" y="44" width="298" height="45"/>
+                                <rect key="frame" x="16" y="58" width="298" height="45"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNC-lB-7fK">
-                                <rect key="frame" x="314" y="44" width="45" height="45"/>
+                                <rect key="frame" x="314" y="58" width="45" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="REm-Hf-MCC"/>
                                     <constraint firstAttribute="width" constant="45" id="ZVZ-SP-gaY"/>
@@ -33,30 +32,10 @@
                                 <state key="normal" image="magnifyingglass" catalog="system"/>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hsP-Ar-MyU">
-                                <rect key="frame" x="0.0" y="97" width="375" height="681"/>
+                                <rect key="frame" x="0.0" y="111" width="375" height="667"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewLayout key="collectionViewLayout" id="uhi-fU-n30" customClass="WaterFallCollectionViewLayout" customModule="Watcha_Task" customModuleProvider="target"/>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="UWc-qe-Io6">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="b3V-vv-cvr">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CUH-Oh-n5J">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="CUH-Oh-n5J" secondAttribute="bottom" id="90r-OZ-nBf"/>
-                                                <constraint firstItem="CUH-Oh-n5J" firstAttribute="leading" secondItem="b3V-vv-cvr" secondAttribute="leading" id="Cni-Ho-qCq"/>
-                                                <constraint firstItem="CUH-Oh-n5J" firstAttribute="top" secondItem="b3V-vv-cvr" secondAttribute="top" id="Y2g-In-dFm"/>
-                                                <constraint firstAttribute="trailing" secondItem="CUH-Oh-n5J" secondAttribute="trailing" id="mDt-qV-Jmm"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3Wo-oS-Jkk"/>
@@ -65,9 +44,9 @@
                             <constraint firstItem="hsP-Ar-MyU" firstAttribute="top" secondItem="Myk-64-XCd" secondAttribute="bottom" constant="8" id="4La-Py-bTe"/>
                             <constraint firstItem="3Wo-oS-Jkk" firstAttribute="bottom" secondItem="hsP-Ar-MyU" secondAttribute="bottom" id="6Af-8C-qzm"/>
                             <constraint firstItem="Myk-64-XCd" firstAttribute="height" secondItem="bNC-lB-7fK" secondAttribute="height" id="7lJ-oA-YVi"/>
-                            <constraint firstItem="Myk-64-XCd" firstAttribute="top" secondItem="3Wo-oS-Jkk" secondAttribute="top" id="EOB-VP-v42"/>
+                            <constraint firstItem="Myk-64-XCd" firstAttribute="top" secondItem="3Wo-oS-Jkk" secondAttribute="top" constant="14" id="EOB-VP-v42"/>
                             <constraint firstItem="Myk-64-XCd" firstAttribute="leading" secondItem="3Wo-oS-Jkk" secondAttribute="leading" constant="16" id="bnb-Ry-emM"/>
-                            <constraint firstItem="bNC-lB-7fK" firstAttribute="top" secondItem="3Wo-oS-Jkk" secondAttribute="top" id="f3v-Oc-1mM"/>
+                            <constraint firstItem="bNC-lB-7fK" firstAttribute="top" secondItem="3Wo-oS-Jkk" secondAttribute="top" constant="14" id="f3v-Oc-1mM"/>
                             <constraint firstItem="3Wo-oS-Jkk" firstAttribute="trailing" secondItem="bNC-lB-7fK" secondAttribute="trailing" constant="16" id="ifW-Vo-Plc"/>
                             <constraint firstItem="hsP-Ar-MyU" firstAttribute="leading" secondItem="3Wo-oS-Jkk" secondAttribute="leading" id="nHC-N1-AXy"/>
                             <constraint firstItem="3Wo-oS-Jkk" firstAttribute="trailing" secondItem="hsP-Ar-MyU" secondAttribute="trailing" id="xr8-IL-h17"/>

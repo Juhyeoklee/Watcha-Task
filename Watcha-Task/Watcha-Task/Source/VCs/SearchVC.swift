@@ -35,12 +35,18 @@ class SearchVC: UIViewController {
     // MARK:- LifeCycle Method
     override func viewDidLoad() {
         super.viewDidLoad()
-        layoutInit()
         
+        layoutInit()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.navigationItem.title = "Search"
+    }
+    
     
     // MARK:- Member Method
     private func layoutInit() {
+        self.tabBarController?.navigationItem.title = "Search"
         searchTextField.addLeftPadding(left: 20)
         searchTextField.makeRounded(cornerRadius: 20)
     }
@@ -56,7 +62,6 @@ extension SearchVC: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GIFImageCVCell.identifier, for: indexPath) as? GIFImageCVCell else {
             return UICollectionViewCell()
         }
-//        print(indexPath)
         cell.gifImageView.backgroundColor = .brown
         return cell
     }
@@ -64,7 +69,13 @@ extension SearchVC: UICollectionViewDataSource {
 
 // MARK:- UICollectionViewDelegate Extensions
 extension SearchVC: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let dvc = UIStoryboard(name: "Detail", bundle: nil)
+            .instantiateViewController(identifier: "DetailVC") as? DetailVC {
+            dvc.navigationItem.title = "결과"
+            self.navigationController?.pushViewController(dvc, animated: true)
+        }
+    }
 }
 // MARK:- WaterFallCollectionViewLayoutDelegate Extensions
 extension SearchVC: WaterFallCollectionViewLayoutDelegate {

@@ -9,12 +9,16 @@ import UIKit
 
 class FavoritesVC: UIViewController {
 
+    @IBOutlet weak var favoritesCollectionView: UICollectionView!
+    
     // MARK:- LifeCycle Method
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.navigationItem.title = "Favorites"
+    }
     
 }
