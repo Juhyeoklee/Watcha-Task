@@ -9,18 +9,18 @@ import Foundation
 
 // MARK: - Image
 struct Image: Codable {
-    let original: GIFMetaData
-    let downsized, downsizedLarge, downsizedMedium: GIFURLData
-    let downsizedSmall: GIFMP4Data
-    let downsizedStill: GIFURLData
-    let fixedHeight, fixedHeightDownsampled, fixedHeightSmall: GIFMetaData
-    let fixedHeightSmallStill, fixedHeightStill: GIFURLData
-    let fixedWidth, fixedWidthDownsampled, fixedWidthSmall: GIFMetaData
-    let fixedWidthSmallStill, fixedWidthStill: GIFURLData
-    let looping: Looping
-    let originalStill: GIFURLData
-    let originalMp4, preview: GIFMP4Data
-    let previewGIF, previewWebp, the480WStill: GIFURLData
+    let original: GIFGenericData?
+    let downsized, downsizedLarge, downsizedMedium: GIFGenericData?
+    let downsizedSmall: GIFGenericData?
+    let downsizedStill: GIFGenericData?
+    let fixedHeight, fixedHeightDownsampled, fixedHeightSmall: GIFGenericData?
+    let fixedHeightSmallStill, fixedHeightStill: GIFGenericData?
+    let fixedWidth, fixedWidthDownsampled, fixedWidthSmall: GIFGenericData?
+    let fixedWidthSmallStill, fixedWidthStill: GIFGenericData?
+    let looping: GIFGenericData?
+    let originalStill: GIFGenericData?
+    let originalMp4, preview: GIFGenericData?
+    let previewGIF, previewWebp, the480WStill: GIFGenericData?
 
     enum CodingKeys: String, CodingKey {
         case original, downsized
@@ -45,5 +45,33 @@ struct Image: Codable {
         case previewGIF = "preview_gif"
         case previewWebp = "preview_webp"
         case the480WStill = "480w_still"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        original = (try? values.decode(GIFGenericData.self, forKey: .original)) ?? nil
+        downsized = (try? values.decode(GIFGenericData.self, forKey: .downsized)) ?? nil
+        downsizedLarge = (try? values.decode(GIFGenericData.self, forKey: .downsizedLarge)) ?? nil
+        downsizedMedium = (try? values.decode(GIFGenericData.self, forKey: .downsizedMedium)) ?? nil
+        downsizedSmall = (try? values.decode(GIFGenericData.self, forKey: .downsizedSmall)) ?? nil
+        downsizedStill = (try? values.decode(GIFGenericData.self, forKey: .downsizedStill)) ?? nil
+        fixedHeight = (try? values.decode(GIFGenericData.self, forKey: .fixedHeight)) ?? nil
+        fixedHeightDownsampled = (try? values.decode(GIFGenericData.self, forKey: .fixedHeightDownsampled)) ?? nil
+        fixedHeightSmall = (try? values.decode(GIFGenericData.self, forKey: .fixedHeightSmall)) ?? nil
+        fixedHeightSmallStill = (try? values.decode(GIFGenericData.self, forKey: .fixedHeightSmallStill)) ?? nil
+        fixedHeightStill = (try? values.decode(GIFGenericData.self, forKey: .fixedHeightStill)) ?? nil
+        fixedWidth = (try? values.decode(GIFGenericData.self, forKey: .fixedWidth)) ?? nil
+        fixedWidthDownsampled = (try? values.decode(GIFGenericData.self, forKey: .fixedWidthDownsampled)) ?? nil
+        fixedWidthSmall = (try? values.decode(GIFGenericData.self, forKey: .fixedWidthSmall)) ?? nil
+        fixedWidthSmallStill = (try? values.decode(GIFGenericData.self, forKey: .fixedWidthSmallStill)) ?? nil
+        fixedWidthStill = (try? values.decode(GIFGenericData.self, forKey: .fixedWidthStill)) ?? nil
+        looping = (try? values.decode(GIFGenericData.self, forKey: .looping)) ?? nil
+        originalStill = (try? values.decode(GIFGenericData.self, forKey: .originalStill)) ?? nil
+        originalMp4 = (try? values.decode(GIFGenericData.self, forKey: .originalMp4)) ?? nil
+        preview = (try? values.decode(GIFGenericData.self, forKey: .preview)) ?? nil
+        previewGIF = (try? values.decode(GIFGenericData.self, forKey: .previewGIF)) ?? nil
+        previewWebp = (try? values.decode(GIFGenericData.self, forKey: .previewWebp)) ?? nil
+        the480WStill = (try? values.decode(GIFGenericData.self, forKey: .the480WStill)) ?? nil
+        
     }
 }

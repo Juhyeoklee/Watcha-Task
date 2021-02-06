@@ -28,18 +28,19 @@
 		A28A266725CD653F0091F552 /* ProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A266625CD653F0091F552 /* ProfileHeaderCollectionReusableView.swift */; };
 		A28A266B25CDD8F40091F552 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A266A25CDD8F40091F552 /* APIConstants.swift */; };
 		A28A266E25CDD9CE0091F552 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A266D25CDD9CE0091F552 /* NetworkResult.swift */; };
-		A28A267325CDDA060091F552 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A267225CDDA060091F552 /* SearchService.swift */; };
+		A28A267325CDDA060091F552 /* GiphyAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A267225CDDA060091F552 /* GiphyAPIService.swift */; };
 		A28A267725CDDB730091F552 /* MetaObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A267625CDDB730091F552 /* MetaObject.swift */; };
 		A28A267B25CDDB9C0091F552 /* PaginationObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A267A25CDDB9C0091F552 /* PaginationObject.swift */; };
 		A28A267F25CDDD010091F552 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A267E25CDDD010091F552 /* User.swift */; };
 		A28A268225CDDD3C0091F552 /* Looping.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A268125CDDD3C0091F552 /* Looping.swift */; };
-		A28A268525CDDD780091F552 /* GIFMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A268425CDDD780091F552 /* GIFMetaData.swift */; };
+		A28A268525CDDD780091F552 /* GIFGenericData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A268425CDDD780091F552 /* GIFGenericData.swift */; };
 		A28A268825CDDD980091F552 /* GIFMP4Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A268725CDDD970091F552 /* GIFMP4Data.swift */; };
 		A28A268C25CDDDB20091F552 /* GIFURLData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A268B25CDDDB20091F552 /* GIFURLData.swift */; };
 		A28A269025CDDDD10091F552 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A268F25CDDDD10091F552 /* Image.swift */; };
-		A28A269325CDDF7D0091F552 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A269225CDDF7D0091F552 /* Analytics.swift */; };
 		A28A269625CDE2020091F552 /* GIFObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A269525CDE2020091F552 /* GIFObject.swift */; };
 		A28A269F25CDE6440091F552 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A269E25CDE6440091F552 /* SearchResult.swift */; };
+		A2DBF0EB25CEC8A200AEDEED /* GIFOriginalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DBF0EA25CEC8A200AEDEED /* GIFOriginalData.swift */; };
+		A2DBF0F425CEF79500AEDEED /* Float+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DBF0F325CEF79500AEDEED /* Float+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,18 +68,19 @@
 		A28A266625CD653F0091F552 /* ProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		A28A266A25CDD8F40091F552 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		A28A266D25CDD9CE0091F552 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
-		A28A267225CDDA060091F552 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		A28A267225CDDA060091F552 /* GiphyAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyAPIService.swift; sourceTree = "<group>"; };
 		A28A267625CDDB730091F552 /* MetaObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaObject.swift; sourceTree = "<group>"; };
 		A28A267A25CDDB9C0091F552 /* PaginationObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationObject.swift; sourceTree = "<group>"; };
 		A28A267E25CDDD010091F552 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A28A268125CDDD3C0091F552 /* Looping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Looping.swift; sourceTree = "<group>"; };
-		A28A268425CDDD780091F552 /* GIFMetaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFMetaData.swift; sourceTree = "<group>"; };
+		A28A268425CDDD780091F552 /* GIFGenericData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFGenericData.swift; sourceTree = "<group>"; };
 		A28A268725CDDD970091F552 /* GIFMP4Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFMP4Data.swift; sourceTree = "<group>"; };
 		A28A268B25CDDDB20091F552 /* GIFURLData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFURLData.swift; sourceTree = "<group>"; };
 		A28A268F25CDDDD10091F552 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
-		A28A269225CDDF7D0091F552 /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		A28A269525CDE2020091F552 /* GIFObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFObject.swift; sourceTree = "<group>"; };
 		A28A269E25CDE6440091F552 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		A2DBF0EA25CEC8A200AEDEED /* GIFOriginalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFOriginalData.swift; sourceTree = "<group>"; };
+		A2DBF0F325CEF79500AEDEED /* Float+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extensions.swift"; sourceTree = "<group>"; };
 		EBD3D52B76689EE277B530FD /* Pods-Watcha-Task.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Watcha-Task.debug.xcconfig"; path = "Target Support Files/Pods-Watcha-Task/Pods-Watcha-Task.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,6 +193,7 @@
 				A26CBCFC25CBD66800B1E376 /* UIView+Extensions.swift */,
 				A26CBD0125CBD6BF00B1E376 /* UITextField+Extensions.swift */,
 				A26CBD0525CBD72F00B1E376 /* UIImageView+Extensions.swift */,
+				A2DBF0F325CEF79500AEDEED /* Float+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -233,7 +236,7 @@
 		A28A267025CDD9F10091F552 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				A28A267225CDDA060091F552 /* SearchService.swift */,
+				A28A267225CDDA060091F552 /* GiphyAPIService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -241,10 +244,10 @@
 		A28A267525CDDB410091F552 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A28A269225CDDF7D0091F552 /* Analytics.swift */,
+				A28A268425CDDD780091F552 /* GIFGenericData.swift */,
 				A28A268725CDDD970091F552 /* GIFMP4Data.swift */,
-				A28A268425CDDD780091F552 /* GIFMetaData.swift */,
 				A28A269525CDE2020091F552 /* GIFObject.swift */,
+				A2DBF0EA25CEC8A200AEDEED /* GIFOriginalData.swift */,
 				A28A268B25CDDDB20091F552 /* GIFURLData.swift */,
 				A28A268F25CDDDD10091F552 /* Image.swift */,
 				A28A268125CDDD3C0091F552 /* Looping.swift */,
@@ -386,14 +389,16 @@
 				A28A267B25CDDB9C0091F552 /* PaginationObject.swift in Sources */,
 				A28A265B25CD5CFA0091F552 /* DetailVC.swift in Sources */,
 				A26CBCFD25CBD66800B1E376 /* UIView+Extensions.swift in Sources */,
-				A28A268525CDDD780091F552 /* GIFMetaData.swift in Sources */,
+				A28A268525CDDD780091F552 /* GIFGenericData.swift in Sources */,
+				A2DBF0F425CEF79500AEDEED /* Float+Extensions.swift in Sources */,
 				A22DE86A25C8821E00F5B264 /* SearchVC.swift in Sources */,
-				A28A267325CDDA060091F552 /* SearchService.swift in Sources */,
+				A28A267325CDDA060091F552 /* GiphyAPIService.swift in Sources */,
 				A22DE87025C8832000F5B264 /* FavoritesVC.swift in Sources */,
 				A28A267F25CDDD010091F552 /* User.swift in Sources */,
 				A28A268225CDDD3C0091F552 /* Looping.swift in Sources */,
 				A22DE83225C7E9CB00F5B264 /* AppDelegate.swift in Sources */,
 				A28A266E25CDD9CE0091F552 /* NetworkResult.swift in Sources */,
+				A2DBF0EB25CEC8A200AEDEED /* GIFOriginalData.swift in Sources */,
 				A28A268C25CDDDB20091F552 /* GIFURLData.swift in Sources */,
 				A28A268825CDDD980091F552 /* GIFMP4Data.swift in Sources */,
 				A22DE83425C7E9CB00F5B264 /* SceneDelegate.swift in Sources */,
@@ -404,7 +409,6 @@
 				A26CBD0625CBD72F00B1E376 /* UIImageView+Extensions.swift in Sources */,
 				A28A269F25CDE6440091F552 /* SearchResult.swift in Sources */,
 				A22DE86425C881D800F5B264 /* GiphyTabBarController.swift in Sources */,
-				A28A269325CDDF7D0091F552 /* Analytics.swift in Sources */,
 				A28A269625CDE2020091F552 /* GIFObject.swift in Sources */,
 				A26CBD0B25CBDA7600B1E376 /* UserDefaultKeys.swift in Sources */,
 				A28A269025CDDDD10091F552 /* Image.swift in Sources */,

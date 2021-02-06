@@ -7,6 +7,8 @@
 
 import UIKit
 
+import SwiftyJSON
+
 class SearchVC: UIViewController {
     // MARK:- IBOutlet
     @IBOutlet weak var searchTextField: UITextField! {
@@ -18,18 +20,21 @@ class SearchVC: UIViewController {
     
     @IBOutlet weak var searchResultCollectionView: UICollectionView! {
         didSet {
+            if let layout = searchResultCollectionView.collectionViewLayout as? WaterFallCollectionViewLayout {
+                layout.delegate = self
+            }
             searchResultCollectionView.delegate = self
             searchResultCollectionView.dataSource = self
             searchResultCollectionView.register(GIFImageCVCell.self,
                                                 forCellWithReuseIdentifier: GIFImageCVCell.identifier)
-            if let layout = searchResultCollectionView.collectionViewLayout as? WaterFallCollectionViewLayout {
-                layout.delegate = self
-            }
+            
         }
     }
     // MARK:- Member Variation
-    var gifImageSizes: [CGFloat] = [100, 200, 50, 30, 90, 100, 100, 200, 300, 150, 90, 100, 100, 200, 300, 150]
-    
+    var gifLinks: [String] = []
+    var gifs: [GIFObject] = []
+    var gifImageSizes: [CGFloat] = []
+    var page: Int = 0
     
     // MARK:- LifeCycle Method
     override func viewDidLoad() {
@@ -39,7 +44,8 @@ class SearchVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.navigationItem.title = "Search"
+        tabBarController?.navigationItem.title = "Search"
+        reloadCollectionView()
     }
     
     // MARK:- IBAction Method
@@ -50,21 +56,60 @@ class SearchVC: UIViewController {
     
     // MARK:- Member Method
     private func layoutInit() {
-        self.tabBarController?.navigationItem.title = "Search"
+        tabBarController?.navigationItem.title = "Search"
         searchTextField.addLeftPadding(left: 20)
         searchTextField.makeRounded(cornerRadius: 20)
+    }
+    
+    private func searchFor(keyword: String) {
+        GiphyAPIService.shared.search(for: keyword, limit: 10) { networkResult in
+            
+            switch networkResult {
+            case .success(let data):
+                if let result = data as? JSON {
+                    self.gifs = result.arrayValue.compactMap {
+                        var gif = GIFObject()
+                        
+                        gif.id = $0["id"].stringValue
+                        gif.title = $0["title"].stringValue
+                        gif.userName = $0["user"]["username"].stringValue
+                        gif.userDisPlayName = $0["user"]["display_name"].stringValue
+                        gif.fixedWidthDownsampledURL = $0["images"]["fixed_width_downsampled"]["url"].stringValue
+                        gif.originalURL = $0["images"]["original"]["url"].stringValue
+                        gif.gifHeight = $0["images"]["fixed_width_downsampled"]["height"].floatValue.toCGFloat()
+                        
+                        return gif
+                    }
+                    self.reloadCollectionView()
+                }
+            case .requestErr(let msg):
+                print(msg as? String ?? "")
+            case .pathErr:
+                print("pathErr")
+            case .networkFail:
+                print("networkFail")
+            default:
+                print("err")
+            }
+        }
+    }
+    
+    private func reloadCollectionView() {
+        if let layout = searchResultCollectionView.collectionViewLayout as? WaterFallCollectionViewLayout {
+            layout.removeAllCache()
+        }
+        
+        searchResultCollectionView.reloadData()
     }
 }
 
 // MARK:- UITextFieldDelegate Extensions
 extension SearchVC: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        gifImageSizes.removeAll()
-        if let layout = searchResultCollectionView.collectionViewLayout as? WaterFallCollectionViewLayout {
-            layout.removeAllCache()
+        if let text = textField.text,
+           text.count > 0 {
+            searchFor(keyword: text)
         }
-        
-        searchResultCollectionView.reloadData()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -76,14 +121,14 @@ extension SearchVC: UITextFieldDelegate {
 // MARK:- UICollectionViewDataSource Extensions
 extension SearchVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return gifImageSizes.count
+        return gifs.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GIFImageCVCell.identifier, for: indexPath) as? GIFImageCVCell else {
             return UICollectionViewCell()
         }
-        cell.gifImageView.backgroundColor = .brown
+        cell.gifImageView.imageFromUrl(gifs[indexPath.item].fixedWidthDownsampledURL)
         return cell
     }
 }
@@ -103,8 +148,8 @@ extension SearchVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if searchResultCollectionView.contentOffset.y + searchResultCollectionView.bounds.height == searchResultCollectionView.contentSize.height {
             
-            gifImageSizes.append(contentsOf: [100, 100, 100, 200, 100])
-            searchResultCollectionView.reloadData()
+//            gifImageSizes.append(contentsOf: [100, 100, 100, 200, 100])
+//            searchResultCollectionView.reloadData()
             
         }
     }
@@ -114,6 +159,6 @@ extension SearchVC: UIScrollViewDelegate {
 // MARK:- WaterFallCollectionViewLayoutDelegate Extensions
 extension SearchVC: WaterFallCollectionViewLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForImageAtIndexPath indexPath: IndexPath) -> CGFloat {
-        return gifImageSizes[indexPath.item]
+        return gifs[indexPath.item].gifHeight
     }
 }
