@@ -29,7 +29,7 @@ struct GiphyAPIService {
             }
             switch statusCode {
             case 200:
-                return .success(decodedData["data"])
+                return .success(decodedData)
             case 400..<500:
                 return .requestErr(decodedData["meta"]["msg"])
             default:

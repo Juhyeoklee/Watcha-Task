@@ -31,10 +31,10 @@ class SearchVC: UIViewController {
         }
     }
     // MARK:- Member Variation
-    var gifLinks: [String] = []
     var gifs: [GIFObject] = []
-    var gifImageSizes: [CGFloat] = []
-    var page: Int = 0
+    var keyword: String = ""
+    var resultOffset: Int = 0
+    var resultTotalCount: Int = 0
     
     // MARK:- LifeCycle Method
     override func viewDidLoad() {
@@ -61,26 +61,67 @@ class SearchVC: UIViewController {
         searchTextField.makeRounded(cornerRadius: 20)
     }
     
-    private func searchFor(keyword: String) {
-        GiphyAPIService.shared.search(for: keyword, limit: 10) { networkResult in
+    private func searchFor(keyword: String, completion: @escaping ()->()) {
+        var limit = 10
+        let isFirst = (keyword != self.keyword)
+        if self.resultOffset > self.resultTotalCount {
+            self.resultOffset = self.resultTotalCount
+            return
+        }
+        if isFirst {
+            self.keyword = keyword
+            limit = 15
+            resultOffset = 0
+        }
+        
+        GiphyAPIService.shared.search(for: keyword, limit: limit, offset: resultOffset) { networkResult in
             
             switch networkResult {
             case .success(let data):
                 if let result = data as? JSON {
-                    self.gifs = result.arrayValue.compactMap {
-                        var gif = GIFObject()
+                    if isFirst {
+                        self.resultTotalCount = result["pagination"]["total_count"].intValue
+                        self.gifs = result["data"].arrayValue.compactMap {
+                            var gif = GIFObject()
+                            
+                            gif.id = $0["id"].stringValue
+                            gif.title = $0["title"].stringValue
+                            gif.userName = $0["user"]["username"].stringValue
+                            gif.userDisPlayName = $0["user"]["display_name"].stringValue
+                            gif.fixedWidthDownsampledURL = $0["images"]["fixed_width_downsampled"]["url"].stringValue
+                            gif.originalURL = $0["images"]["original"]["url"].stringValue
+                            gif.gifHeight = $0["images"]["fixed_width_downsampled"]["height"].floatValue.toCGFloat()
+                            
+                            return gif
+                        }
                         
-                        gif.id = $0["id"].stringValue
-                        gif.title = $0["title"].stringValue
-                        gif.userName = $0["user"]["username"].stringValue
-                        gif.userDisPlayName = $0["user"]["display_name"].stringValue
-                        gif.fixedWidthDownsampledURL = $0["images"]["fixed_width_downsampled"]["url"].stringValue
-                        gif.originalURL = $0["images"]["original"]["url"].stringValue
-                        gif.gifHeight = $0["images"]["fixed_width_downsampled"]["height"].floatValue.toCGFloat()
-                        
-                        return gif
                     }
-                    self.reloadCollectionView()
+                    else {
+                        let tmpArr: [GIFObject] = result["data"].arrayValue.compactMap {
+                            var gif = GIFObject()
+                            
+                            gif.id = $0["id"].stringValue
+                            gif.title = $0["title"].stringValue
+                            gif.userName = $0["user"]["username"].stringValue
+                            gif.userDisPlayName = $0["user"]["display_name"].stringValue
+                            gif.fixedWidthDownsampledURL = $0["images"]["fixed_width_downsampled"]["url"].stringValue
+                            gif.originalURL = $0["images"]["original"]["url"].stringValue
+                            gif.gifHeight = $0["images"]["fixed_width_downsampled"]["height"].floatValue.toCGFloat()
+                            
+                            return gif
+                        }
+                        
+                        self.gifs.append(contentsOf: tmpArr)
+                    }
+//                    self.resultOffset += limit
+                    
+//                    if self.resultOffset > self.resultTotalCount {
+//                        self.resultOffset = self.resultTotalCount
+//                    }
+                    
+                    DispatchQueue.main.async {
+                        completion()
+                    }
                 }
             case .requestErr(let msg):
                 print(msg as? String ?? "")
@@ -92,6 +133,7 @@ class SearchVC: UIViewController {
                 print("err")
             }
         }
+        self.resultOffset += limit
     }
     
     private func reloadCollectionView() {
@@ -108,7 +150,9 @@ extension SearchVC: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let text = textField.text,
            text.count > 0 {
-            searchFor(keyword: text)
+            searchFor(keyword: text) {
+                self.reloadCollectionView()
+            }
         }
     }
     
@@ -128,7 +172,8 @@ extension SearchVC: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GIFImageCVCell.identifier, for: indexPath) as? GIFImageCVCell else {
             return UICollectionViewCell()
         }
-        cell.gifImageView.imageFromUrl(gifs[indexPath.item].fixedWidthDownsampledURL)
+
+        cell.setImageWithLoading(urlString: gifs[indexPath.item].fixedWidthDownsampledURL)
         return cell
     }
 }
@@ -139,18 +184,21 @@ extension SearchVC: UICollectionViewDelegate {
         if let dvc = UIStoryboard(name: "Detail", bundle: nil)
             .instantiateViewController(identifier: "DetailVC") as? DetailVC {
             dvc.navigationItem.title = "결과"
-            self.navigationController?.pushViewController(dvc, animated: true)
+            navigationController?.pushViewController(dvc, animated: true)
         }
     }
 }
 
 extension SearchVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if searchResultCollectionView.contentOffset.y + searchResultCollectionView.bounds.height == searchResultCollectionView.contentSize.height {
+        print(searchResultCollectionView.contentOffset.y + searchResultCollectionView.bounds.height + 100,searchResultCollectionView.contentSize.height)
+        
+        if searchResultCollectionView.contentOffset.y + searchResultCollectionView.bounds.height ==
+            searchResultCollectionView.contentSize.height {
             
-//            gifImageSizes.append(contentsOf: [100, 100, 100, 200, 100])
-//            searchResultCollectionView.reloadData()
-            
+            searchFor(keyword: keyword) {
+                self.reloadCollectionView()
+            }
         }
     }
 }

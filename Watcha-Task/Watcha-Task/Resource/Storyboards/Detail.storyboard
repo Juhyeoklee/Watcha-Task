@@ -42,15 +42,22 @@
                                 </constraints>
                                 <state key="normal" image="heart" catalog="system"/>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Dp8-lX-zV0">
+                                <rect key="frame" x="197" y="426" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vhx-pR-yrk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="X52-lF-GkH" firstAttribute="centerY" secondItem="rar-sC-47Y" secondAttribute="centerY" id="3td-wU-l2r"/>
+                            <constraint firstItem="Dp8-lX-zV0" firstAttribute="bottom" secondItem="X52-lF-GkH" secondAttribute="bottom" id="4Jd-2X-HrG"/>
                             <constraint firstItem="WN8-PT-NqO" firstAttribute="trailing" secondItem="X52-lF-GkH" secondAttribute="trailing" id="4jJ-Ff-LfD"/>
                             <constraint firstItem="X52-lF-GkH" firstAttribute="leading" secondItem="vhx-pR-yrk" secondAttribute="leading" constant="20" id="4of-3L-fKI"/>
                             <constraint firstItem="2zL-qM-GM0" firstAttribute="top" secondItem="CBf-Wh-3Tm" secondAttribute="bottom" id="7jo-BY-dNO"/>
+                            <constraint firstItem="Dp8-lX-zV0" firstAttribute="top" secondItem="X52-lF-GkH" secondAttribute="top" id="GLC-R5-MXw"/>
                             <constraint firstItem="X52-lF-GkH" firstAttribute="centerX" secondItem="rar-sC-47Y" secondAttribute="centerX" id="OdK-FD-YlJ"/>
+                            <constraint firstItem="Dp8-lX-zV0" firstAttribute="leading" secondItem="X52-lF-GkH" secondAttribute="leading" id="Uet-BF-wfe"/>
+                            <constraint firstItem="Dp8-lX-zV0" firstAttribute="trailing" secondItem="X52-lF-GkH" secondAttribute="trailing" id="XcM-sB-bPJ"/>
                             <constraint firstItem="2zL-qM-GM0" firstAttribute="leading" secondItem="CBf-Wh-3Tm" secondAttribute="leading" id="e9R-mM-nOk"/>
                             <constraint firstItem="WN8-PT-NqO" firstAttribute="top" secondItem="CBf-Wh-3Tm" secondAttribute="top" id="ebX-EP-9yR"/>
                             <constraint firstItem="vhx-pR-yrk" firstAttribute="trailing" secondItem="X52-lF-GkH" secondAttribute="trailing" constant="20" id="hPH-hr-8Rh"/>
