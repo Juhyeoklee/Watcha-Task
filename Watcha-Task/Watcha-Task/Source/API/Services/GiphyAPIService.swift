@@ -13,8 +13,13 @@ import SwiftyJSON
 struct GiphyAPIService {
     static let shared = GiphyAPIService()
     
-    public func search(for keyword: String, limit: Int = 10, offset: Int = 0, completion: @escaping (NetworkResult<Any>) -> ()) {
-        let url = APIConstants.searchURL
+    public func search(for keyword: String,
+                       limit: Int = 10,
+                       offset: Int = 0,
+                       state: ImageState,
+                       completion: @escaping (NetworkResult<Any>) -> ()) {
+        
+        let url = state == .gif ? APIConstants.gifSearchURL : APIConstants.stickerSearchURL
         
         let parameter: Parameters = [
             "api_key" : APIConstants.key,
@@ -23,10 +28,11 @@ struct GiphyAPIService {
             "offset" : offset
         ]
         func judgeData(_ statusCode: Int, data: Data) -> NetworkResult<Any> {
-            
+        
             guard let decodedData = try? JSON(data: data) else {
                 return .pathErr
             }
+            print(decodedData)
             switch statusCode {
             case 200:
                 return .success(decodedData)
@@ -52,6 +58,7 @@ struct GiphyAPIService {
                 guard let data = response.value else {
                     return
                 }
+                
                 completion(judgeData(statusCode, data: data))
             case .failure(let err):
                 print(err)

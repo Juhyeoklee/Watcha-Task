@@ -18,12 +18,10 @@ extension UIImageView {
     }
     public func imageFromUrl(_ urlString: String?,
                              completionHandler: @escaping () -> ()) {
-        self.backgroundColor = .systemGray5
         if let url = urlString {
             self.kf.setImage(with: URL(string: url),
                              options: [.transition(ImageTransition.fade(0.5))],
                              completionHandler:  { result in
-                                self.backgroundColor = .clear
                                 completionHandler()
                              })
         }

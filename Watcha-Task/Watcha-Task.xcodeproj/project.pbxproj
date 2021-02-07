@@ -41,6 +41,7 @@
 		A28A269F25CDE6440091F552 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A269E25CDE6440091F552 /* SearchResult.swift */; };
 		A2DBF0EB25CEC8A200AEDEED /* GIFOriginalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DBF0EA25CEC8A200AEDEED /* GIFOriginalData.swift */; };
 		A2DBF0F425CEF79500AEDEED /* Float+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DBF0F325CEF79500AEDEED /* Float+Extensions.swift */; };
+		A2DBF0F825D05BA100AEDEED /* SearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DBF0F725D05BA100AEDEED /* SearchState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		A28A269E25CDE6440091F552 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		A2DBF0EA25CEC8A200AEDEED /* GIFOriginalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFOriginalData.swift; sourceTree = "<group>"; };
 		A2DBF0F325CEF79500AEDEED /* Float+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extensions.swift"; sourceTree = "<group>"; };
+		A2DBF0F725D05BA100AEDEED /* SearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchState.swift; sourceTree = "<group>"; };
 		EBD3D52B76689EE277B530FD /* Pods-Watcha-Task.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Watcha-Task.debug.xcconfig"; path = "Target Support Files/Pods-Watcha-Task/Pods-Watcha-Task.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -229,6 +231,7 @@
 				A28A267025CDD9F10091F552 /* Services */,
 				A28A266A25CDD8F40091F552 /* APIConstants.swift */,
 				A28A266D25CDD9CE0091F552 /* NetworkResult.swift */,
+				A2DBF0F725D05BA100AEDEED /* SearchState.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				A22DE87025C8832000F5B264 /* FavoritesVC.swift in Sources */,
 				A28A267F25CDDD010091F552 /* User.swift in Sources */,
 				A28A268225CDDD3C0091F552 /* Looping.swift in Sources */,
+				A2DBF0F825D05BA100AEDEED /* SearchState.swift in Sources */,
 				A22DE83225C7E9CB00F5B264 /* AppDelegate.swift in Sources */,
 				A28A266E25CDD9CE0091F552 /* NetworkResult.swift in Sources */,
 				A2DBF0EB25CEC8A200AEDEED /* GIFOriginalData.swift in Sources */,

@@ -30,7 +30,18 @@ class SearchVC: UIViewController {
             
         }
     }
+    
+    var indicatorBar: UIView = {
+        let view = UIView()
+        view.backgroundColor = .cyan
+        return view
+    }()
+    
     // MARK:- Member Variation
+    let initialLimit: Int = 15
+    let paginationLimit: Int = 10
+    
+    var searchState: ImageState = .gif
     var gifs: [GIFObject] = []
     var keyword: String = ""
     var resultOffset: Int = 0
@@ -39,7 +50,6 @@ class SearchVC: UIViewController {
     // MARK:- LifeCycle Method
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         layoutInit()
     }
     
@@ -54,6 +64,21 @@ class SearchVC: UIViewController {
         searchTextField.endEditing(false)
     }
     
+    
+    @IBAction func touchUpStateButton(_ sender: UIButton) {
+        if sender.titleLabel?.text == "GIFs" {
+            searchState = .gif
+        }
+        else {
+            searchState = .sticker
+        }
+        
+        if let text = searchTextField.text, text.count > 0 {
+            updateResultFor(keyword: text)
+        }
+    }
+    
+    
     // MARK:- Member Method
     private func layoutInit() {
         tabBarController?.navigationItem.title = "Search"
@@ -61,67 +86,29 @@ class SearchVC: UIViewController {
         searchTextField.makeRounded(cornerRadius: 20)
     }
     
-    private func searchFor(keyword: String, completion: @escaping ()->()) {
-        var limit = 10
-        let isFirst = (keyword != self.keyword)
-        if self.resultOffset > self.resultTotalCount {
-            self.resultOffset = self.resultTotalCount
-            return
-        }
-        if isFirst {
-            self.keyword = keyword
-            limit = 15
-            resultOffset = 0
-        }
+    private func searchFor(keyword: String, limit: Int, completion: @escaping ([GIFObject])->()) {
         
-        GiphyAPIService.shared.search(for: keyword, limit: limit, offset: resultOffset) { networkResult in
+        GiphyAPIService.shared.search(for: keyword, limit: limit, offset: resultOffset, state: searchState) { networkResult in
             
             switch networkResult {
             case .success(let data):
                 if let result = data as? JSON {
-                    if isFirst {
-                        self.resultTotalCount = result["pagination"]["total_count"].intValue
-                        self.gifs = result["data"].arrayValue.compactMap {
-                            var gif = GIFObject()
-                            
-                            gif.id = $0["id"].stringValue
-                            gif.title = $0["title"].stringValue
-                            gif.userName = $0["user"]["username"].stringValue
-                            gif.userDisPlayName = $0["user"]["display_name"].stringValue
-                            gif.fixedWidthDownsampledURL = $0["images"]["fixed_width_downsampled"]["url"].stringValue
-                            gif.originalURL = $0["images"]["original"]["url"].stringValue
-                            gif.gifHeight = $0["images"]["fixed_width_downsampled"]["height"].floatValue.toCGFloat()
-                            
-                            return gif
-                        }
+                    self.resultTotalCount = result["pagination"]["total_count"].intValue
+                    let result: [GIFObject] = result["data"].arrayValue.compactMap {
+                        var gif = GIFObject()
                         
-                    }
-                    else {
-                        let tmpArr: [GIFObject] = result["data"].arrayValue.compactMap {
-                            var gif = GIFObject()
-                            
-                            gif.id = $0["id"].stringValue
-                            gif.title = $0["title"].stringValue
-                            gif.userName = $0["user"]["username"].stringValue
-                            gif.userDisPlayName = $0["user"]["display_name"].stringValue
-                            gif.fixedWidthDownsampledURL = $0["images"]["fixed_width_downsampled"]["url"].stringValue
-                            gif.originalURL = $0["images"]["original"]["url"].stringValue
-                            gif.gifHeight = $0["images"]["fixed_width_downsampled"]["height"].floatValue.toCGFloat()
-                            
-                            return gif
-                        }
+                        gif.id = $0["id"].stringValue
+                        gif.title = $0["title"].stringValue
+                        gif.userName = $0["user"]["username"].stringValue
+                        gif.userDisPlayName = $0["user"]["display_name"].stringValue
+                        gif.fixedWidthDownsampledURL = $0["images"]["fixed_width_downsampled"]["url"].stringValue
+                        gif.originalURL = $0["images"]["original"]["url"].stringValue
+                        gif.gifHeight = $0["images"]["fixed_width_downsampled"]["height"].floatValue.toCGFloat()
                         
-                        self.gifs.append(contentsOf: tmpArr)
+                        return gif
                     }
-//                    self.resultOffset += limit
                     
-//                    if self.resultOffset > self.resultTotalCount {
-//                        self.resultOffset = self.resultTotalCount
-//                    }
-                    
-                    DispatchQueue.main.async {
-                        completion()
-                    }
+                    completion(result)
                 }
             case .requestErr(let msg):
                 print(msg as? String ?? "")
@@ -133,7 +120,32 @@ class SearchVC: UIViewController {
                 print("err")
             }
         }
-        self.resultOffset += limit
+    }
+    
+    private func updateResultFor(keyword: String) {
+        self.keyword = keyword
+        searchFor(keyword: keyword, limit: initialLimit) { (result) in
+            self.gifs = result
+            self.resultOffset += self.initialLimit
+            DispatchQueue.main.async {
+                self.reloadCollectionView()
+            }
+        }
+    }
+    
+    private func appendResultFor() {
+        searchFor(keyword: self.keyword, limit: paginationLimit) { (result) in
+            self.gifs.append(contentsOf: result)
+            self.resultOffset += self.paginationLimit
+            
+            if self.resultOffset > self.resultTotalCount {
+                self.resultOffset = self.resultTotalCount
+            }
+            DispatchQueue.main.async {
+                self.reloadCollectionView()
+            }
+            
+        }
     }
     
     private func reloadCollectionView() {
@@ -150,9 +162,7 @@ extension SearchVC: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let text = textField.text,
            text.count > 0 {
-            searchFor(keyword: text) {
-                self.reloadCollectionView()
-            }
+            updateResultFor(keyword: text)
         }
     }
     
@@ -172,7 +182,9 @@ extension SearchVC: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GIFImageCVCell.identifier, for: indexPath) as? GIFImageCVCell else {
             return UICollectionViewCell()
         }
-
+        if searchState == .sticker {
+            cell.gifImageView.backgroundColor = .systemGray6
+        }
         cell.setImageWithLoading(urlString: gifs[indexPath.item].fixedWidthDownsampledURL)
         return cell
     }
@@ -195,10 +207,7 @@ extension SearchVC: UIScrollViewDelegate {
         
         if searchResultCollectionView.contentOffset.y + searchResultCollectionView.bounds.height ==
             searchResultCollectionView.contentSize.height {
-            
-            searchFor(keyword: keyword) {
-                self.reloadCollectionView()
-            }
+            appendResultFor()
         }
     }
 }

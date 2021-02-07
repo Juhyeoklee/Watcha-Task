@@ -35,23 +35,48 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hsP-Ar-MyU">
-                                <rect key="frame" x="0.0" y="111" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="163" width="375" height="615"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewLayout key="collectionViewLayout" id="uhi-fU-n30" customClass="WaterFallCollectionViewLayout" customModule="Watcha_Task" customModuleProvider="target"/>
                                 <cells/>
                             </collectionView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1ih-H8-BVs">
+                                <rect key="frame" x="0.0" y="103" width="375" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxq-rM-k6t">
+                                        <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="60"/>
+                                        <state key="normal" title="GIFs"/>
+                                        <connections>
+                                            <action selector="touchUpStateButton:" destination="Uhn-uh-5dV" eventType="touchUpInside" id="zcs-1J-kzw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5dp-px-RFM">
+                                        <rect key="frame" x="187.66666666666663" y="0.0" width="187.33333333333337" height="60"/>
+                                        <state key="normal" title="Sticker"/>
+                                        <connections>
+                                            <action selector="touchUpStateButton:" destination="Uhn-uh-5dV" eventType="touchUpInside" id="wpj-aZ-wWs"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="OKF-uc-ohU"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3Wo-oS-Jkk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="hsP-Ar-MyU" firstAttribute="top" secondItem="Myk-64-XCd" secondAttribute="bottom" constant="8" id="4La-Py-bTe"/>
                             <constraint firstItem="3Wo-oS-Jkk" firstAttribute="bottom" secondItem="hsP-Ar-MyU" secondAttribute="bottom" id="6Af-8C-qzm"/>
                             <constraint firstItem="Myk-64-XCd" firstAttribute="height" secondItem="bNC-lB-7fK" secondAttribute="height" id="7lJ-oA-YVi"/>
                             <constraint firstItem="Myk-64-XCd" firstAttribute="top" secondItem="3Wo-oS-Jkk" secondAttribute="top" constant="14" id="EOB-VP-v42"/>
+                            <constraint firstItem="3Wo-oS-Jkk" firstAttribute="trailing" secondItem="1ih-H8-BVs" secondAttribute="trailing" id="EaF-Ci-w0C"/>
                             <constraint firstItem="Myk-64-XCd" firstAttribute="leading" secondItem="3Wo-oS-Jkk" secondAttribute="leading" constant="16" id="bnb-Ry-emM"/>
+                            <constraint firstItem="hsP-Ar-MyU" firstAttribute="top" secondItem="1ih-H8-BVs" secondAttribute="bottom" id="cVo-b2-ajn"/>
                             <constraint firstItem="bNC-lB-7fK" firstAttribute="top" secondItem="3Wo-oS-Jkk" secondAttribute="top" constant="14" id="f3v-Oc-1mM"/>
+                            <constraint firstItem="1ih-H8-BVs" firstAttribute="top" secondItem="Myk-64-XCd" secondAttribute="bottom" id="h40-kU-PAo"/>
                             <constraint firstItem="3Wo-oS-Jkk" firstAttribute="trailing" secondItem="bNC-lB-7fK" secondAttribute="trailing" constant="16" id="ifW-Vo-Plc"/>
                             <constraint firstItem="hsP-Ar-MyU" firstAttribute="leading" secondItem="3Wo-oS-Jkk" secondAttribute="leading" id="nHC-N1-AXy"/>
+                            <constraint firstItem="1ih-H8-BVs" firstAttribute="leading" secondItem="3Wo-oS-Jkk" secondAttribute="leading" id="sjT-kD-rLR"/>
                             <constraint firstItem="3Wo-oS-Jkk" firstAttribute="trailing" secondItem="hsP-Ar-MyU" secondAttribute="trailing" id="xr8-IL-h17"/>
                             <constraint firstItem="bNC-lB-7fK" firstAttribute="leading" secondItem="Myk-64-XCd" secondAttribute="trailing" id="xxX-BP-DsP"/>
                         </constraints>

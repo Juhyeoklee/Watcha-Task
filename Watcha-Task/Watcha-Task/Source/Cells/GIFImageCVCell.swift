@@ -28,8 +28,7 @@ class GIFImageCVCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         initLayout()
-//        setIndicator(state: true)
-        
+        setIndicator(state: true)
     }
     
     required init?(coder: NSCoder) {
@@ -44,34 +43,31 @@ class GIFImageCVCell: UICollectionViewCell {
             gifImageView.topAnchor.constraint(equalTo: topAnchor),
             gifImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
-//        addSubview(loadingIndicator)
-//
-//        NSLayoutConstraint.activate([
-//            loadingIndicator.topAnchor.constraint(equalTo: topAnchor),
-//            loadingIndicator.leadingAnchor.constraint(equalTo: leadingAnchor),
-//            loadingIndicator.trailingAnchor.constraint(equalTo: trailingAnchor),
-//            loadingIndicator.bottomAnchor.constraint(equalTo: bottomAnchor)
-//        ])
+        addSubview(loadingIndicator)
+
+        NSLayoutConstraint.activate([
+            loadingIndicator.topAnchor.constraint(equalTo: topAnchor),
+            loadingIndicator.leadingAnchor.constraint(equalTo: leadingAnchor),
+            loadingIndicator.trailingAnchor.constraint(equalTo: trailingAnchor),
+            loadingIndicator.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
     
     private func setIndicator(state: Bool) {
         if state {
             gifImageView.backgroundColor = .systemGray5
-//            loadingIndicator.startAnimating()
+            loadingIndicator.startAnimating()
         }
         else {
             gifImageView.backgroundColor = .clear
-//            loadingIndicator.stopAnimating()
+            loadingIndicator.stopAnimating()
         }
     }
     
     public func setImageWithLoading(urlString: String) {
-//        print("#######Image load start#######")
-//        setIndicator(state: true)
-//        print("#######Image loading#######")
+        setIndicator(state: true)
         gifImageView.imageFromUrl(urlString) {
-//            self.setIndicator(state: false)
-//            print("#######Image end#######")
+            self.setIndicator(state: false)
         }
     }
 }
