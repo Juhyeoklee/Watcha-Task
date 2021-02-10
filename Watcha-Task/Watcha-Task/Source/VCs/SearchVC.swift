@@ -25,24 +25,43 @@ class SearchVC: UIViewController {
             }
             searchResultCollectionView.delegate = self
             searchResultCollectionView.dataSource = self
-            searchResultCollectionView.register(GIFImageCVCell.self,
-                                                forCellWithReuseIdentifier: GIFImageCVCell.identifier)
+            searchResultCollectionView
+                .register(GIFImageCVCell.self,
+                          forCellWithReuseIdentifier: GIFImageCVCell.identifier)
             
         }
     }
+    @IBOutlet weak var categoryTabBarView: CategoryTabBarView! {
+        didSet {
+            categoryTabBarView.delegate = self
+        }
+    }
     
+    
+    
+    @IBOutlet weak var topBarStackView: UIStackView!
+    
+    
+    // MARK:- Member Variation
     var indicatorBar: UIView = {
         let view = UIView()
         view.backgroundColor = .cyan
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    // MARK:- Member Variation
+//    var indicatorConstraints: [NSLayoutConstraint] = []
+    
     let initialLimit: Int = 15
     let paginationLimit: Int = 10
     
     var searchState: ImageState = .gif
-    var gifs: [GIFObject] = []
+    
+    var gifs: [GIFObject] = [] {
+        didSet {
+            reloadCollectionView()
+        }
+    }
     var keyword: String = ""
     var resultOffset: Int = 0
     var resultTotalCount: Int = 0
@@ -65,20 +84,6 @@ class SearchVC: UIViewController {
     }
     
     
-    @IBAction func touchUpStateButton(_ sender: UIButton) {
-        if sender.titleLabel?.text == "GIFs" {
-            searchState = .gif
-        }
-        else {
-            searchState = .sticker
-        }
-        
-        if let text = searchTextField.text, text.count > 0 {
-            updateResultFor(keyword: text)
-        }
-    }
-    
-    
     // MARK:- Member Method
     private func layoutInit() {
         tabBarController?.navigationItem.title = "Search"
@@ -86,9 +91,13 @@ class SearchVC: UIViewController {
         searchTextField.makeRounded(cornerRadius: 20)
     }
     
+    
     private func searchFor(keyword: String, limit: Int, completion: @escaping ([GIFObject])->()) {
         
-        GiphyAPIService.shared.search(for: keyword, limit: limit, offset: resultOffset, state: searchState) { networkResult in
+        GiphyAPIService.shared.search(for: keyword,
+                                      limit: limit,
+                                      offset: resultOffset,
+                                      state: searchState) { networkResult in
             
             switch networkResult {
             case .success(let data):
@@ -127,9 +136,6 @@ class SearchVC: UIViewController {
         searchFor(keyword: keyword, limit: initialLimit) { (result) in
             self.gifs = result
             self.resultOffset += self.initialLimit
-            DispatchQueue.main.async {
-                self.reloadCollectionView()
-            }
         }
     }
     
@@ -141,10 +147,6 @@ class SearchVC: UIViewController {
             if self.resultOffset > self.resultTotalCount {
                 self.resultOffset = self.resultTotalCount
             }
-            DispatchQueue.main.async {
-                self.reloadCollectionView()
-            }
-            
         }
     }
     
@@ -192,7 +194,8 @@ extension SearchVC: UICollectionViewDataSource {
 
 // MARK:- UICollectionViewDelegate Extensions
 extension SearchVC: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
         if let dvc = UIStoryboard(name: "Detail", bundle: nil)
             .instantiateViewController(identifier: "DetailVC") as? DetailVC {
             dvc.navigationItem.title = "결과"
@@ -201,10 +204,9 @@ extension SearchVC: UICollectionViewDelegate {
     }
 }
 
+// MARK:- UIScrollViewDelegate Extensions
 extension SearchVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(searchResultCollectionView.contentOffset.y + searchResultCollectionView.bounds.height + 100,searchResultCollectionView.contentSize.height)
-        
         if searchResultCollectionView.contentOffset.y + searchResultCollectionView.bounds.height ==
             searchResultCollectionView.contentSize.height {
             appendResultFor()
@@ -217,5 +219,15 @@ extension SearchVC: UIScrollViewDelegate {
 extension SearchVC: WaterFallCollectionViewLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForImageAtIndexPath indexPath: IndexPath) -> CGFloat {
         return gifs[indexPath.item].gifHeight
+    }
+}
+
+// MARK:- CategoryTabBarDelegate Extensions
+extension SearchVC: CategoryTabBarDelegate {
+    func touchUpTabButton(state: ImageState) {
+        if let text = searchTextField.text, text.count > 0{
+            searchState = state
+            updateResultFor(keyword: text)
+        }
     }
 }

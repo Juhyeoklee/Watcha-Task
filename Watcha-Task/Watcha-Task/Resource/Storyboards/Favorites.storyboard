@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kOT-dB-RAc">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="0.0" y="104" width="375" height="674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewLayout key="collectionViewLayout" id="aOl-CF-3LO" customClass="WaterFallCollectionViewLayout" customModule="Watcha_Task" customModuleProvider="target"/>
                                 <cells>
@@ -33,14 +33,24 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ta-LB-qK5" customClass="CategoryTabBarView" customModule="Watcha_Task" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="375" height="60"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="6Ta-LB-qK5" secondAttribute="height" multiplier="25:4" id="J1M-3w-VQ3"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RpE-pt-FUR"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="kOT-dB-RAc" firstAttribute="top" secondItem="RpE-pt-FUR" secondAttribute="top" id="ErK-lK-ajN"/>
+                            <constraint firstItem="6Ta-LB-qK5" firstAttribute="leading" secondItem="RpE-pt-FUR" secondAttribute="leading" id="CBy-IS-tio"/>
                             <constraint firstItem="RpE-pt-FUR" firstAttribute="bottom" secondItem="kOT-dB-RAc" secondAttribute="bottom" id="G3p-9S-Se3"/>
                             <constraint firstItem="RpE-pt-FUR" firstAttribute="trailing" secondItem="kOT-dB-RAc" secondAttribute="trailing" id="GU4-ew-fe6"/>
+                            <constraint firstItem="6Ta-LB-qK5" firstAttribute="top" secondItem="RpE-pt-FUR" secondAttribute="top" id="dZa-vm-mA9"/>
                             <constraint firstItem="kOT-dB-RAc" firstAttribute="leading" secondItem="RpE-pt-FUR" secondAttribute="leading" id="ebX-Uk-xyl"/>
+                            <constraint firstItem="RpE-pt-FUR" firstAttribute="trailing" secondItem="6Ta-LB-qK5" secondAttribute="trailing" id="ngw-L0-Lmi"/>
+                            <constraint firstItem="kOT-dB-RAc" firstAttribute="top" secondItem="6Ta-LB-qK5" secondAttribute="bottom" id="u9f-bH-8Uw"/>
                         </constraints>
                     </view>
                     <connections>

@@ -42,6 +42,7 @@
 		A2DBF0EB25CEC8A200AEDEED /* GIFOriginalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DBF0EA25CEC8A200AEDEED /* GIFOriginalData.swift */; };
 		A2DBF0F425CEF79500AEDEED /* Float+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DBF0F325CEF79500AEDEED /* Float+Extensions.swift */; };
 		A2DBF0F825D05BA100AEDEED /* SearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DBF0F725D05BA100AEDEED /* SearchState.swift */; };
+		A2DBF10025D19F3C00AEDEED /* CategoryTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DBF0FF25D19F3C00AEDEED /* CategoryTabBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		A2DBF0EA25CEC8A200AEDEED /* GIFOriginalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFOriginalData.swift; sourceTree = "<group>"; };
 		A2DBF0F325CEF79500AEDEED /* Float+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extensions.swift"; sourceTree = "<group>"; };
 		A2DBF0F725D05BA100AEDEED /* SearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchState.swift; sourceTree = "<group>"; };
+		A2DBF0FF25D19F3C00AEDEED /* CategoryTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTabBarView.swift; sourceTree = "<group>"; };
 		EBD3D52B76689EE277B530FD /* Pods-Watcha-Task.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Watcha-Task.debug.xcconfig"; path = "Target Support Files/Pods-Watcha-Task/Pods-Watcha-Task.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,6 +138,7 @@
 		A22DE84625C7EF9B00F5B264 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				A2DBF0FE25D19EFF00AEDEED /* Views */,
 				A28A267525CDDB410091F552 /* Models */,
 				A28A266925CDD8E40091F552 /* API */,
 				A26CBD1A25CC4E1A00B1E376 /* CustomViews */,
@@ -260,6 +263,14 @@
 				A28A267E25CDDD010091F552 /* User.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		A2DBF0FE25D19EFF00AEDEED /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A2DBF0FF25D19F3C00AEDEED /* CategoryTabBarView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B1194D97784BE749908B8877 /* Pods */ = {
@@ -387,6 +398,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2DBF10025D19F3C00AEDEED /* CategoryTabBarView.swift in Sources */,
 				A26CBD0225CBD6BF00B1E376 /* UITextField+Extensions.swift in Sources */,
 				A26CBD1D25CC4E8E00B1E376 /* WaterFallCollectionViewLayout.swift in Sources */,
 				A28A267B25CDDB9C0091F552 /* PaginationObject.swift in Sources */,

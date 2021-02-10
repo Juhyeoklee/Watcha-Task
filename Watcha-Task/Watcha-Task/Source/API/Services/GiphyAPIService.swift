@@ -32,7 +32,6 @@ struct GiphyAPIService {
             guard let decodedData = try? JSON(data: data) else {
                 return .pathErr
             }
-            print(decodedData)
             switch statusCode {
             case 200:
                 return .success(decodedData)
