@@ -38,10 +38,6 @@ class SearchVC: UIViewController {
     }
     
     
-    
-    @IBOutlet weak var topBarStackView: UIStackView!
-    
-    
     // MARK:- Member Variation
     var indicatorBar: UIView = {
         let view = UIView()
@@ -49,9 +45,7 @@ class SearchVC: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
-//    var indicatorConstraints: [NSLayoutConstraint] = []
-    
+
     let initialLimit: Int = 15
     let paginationLimit: Int = 10
     
@@ -104,17 +98,20 @@ class SearchVC: UIViewController {
                 if let result = data as? JSON {
                     self.resultTotalCount = result["pagination"]["total_count"].intValue
                     let result: [GIFObject] = result["data"].arrayValue.compactMap {
-                        var gif = GIFObject()
+                        let user = $0["user"]
+                        let images = $0["images"]
+                        let sampleImage = images["fixed_width_downsampled"]
+                        let originalImage = images["original"]
                         
-                        gif.id = $0["id"].stringValue
-                        gif.title = $0["title"].stringValue
-                        gif.userName = $0["user"]["username"].stringValue
-                        gif.userDisPlayName = $0["user"]["display_name"].stringValue
-                        gif.fixedWidthDownsampledURL = $0["images"]["fixed_width_downsampled"]["url"].stringValue
-                        gif.originalURL = $0["images"]["original"]["url"].stringValue
-                        gif.gifHeight = $0["images"]["fixed_width_downsampled"]["height"].floatValue.toCGFloat()
-                        
-                        return gif
+                        return GIFObject(id: $0["id"].stringValue,
+                                         title: $0["title"].stringValue,
+                                         userDisPlayName: user["display_name"].stringValue,
+                                         userName: user["username"].stringValue,
+                                         source: $0["source"].stringValue,
+                                         fixedWidthDownsampledURL: sampleImage["url"].stringValue,
+                                         fixedWidthDownsampledHeight: sampleImage["height"].floatValue.toCGFloat(),
+                                         originalURL: originalImage["url"].stringValue,
+                                         originalHeight: originalImage["height"].floatValue.toCGFloat())
                     }
                     
                     completion(result)
@@ -133,6 +130,7 @@ class SearchVC: UIViewController {
     
     private func updateResultFor(keyword: String) {
         self.keyword = keyword
+        resultOffset = 0
         searchFor(keyword: keyword, limit: initialLimit) { (result) in
             self.gifs = result
             self.resultOffset += self.initialLimit
@@ -198,7 +196,7 @@ extension SearchVC: UICollectionViewDelegate {
                         didSelectItemAt indexPath: IndexPath) {
         if let dvc = UIStoryboard(name: "Detail", bundle: nil)
             .instantiateViewController(identifier: "DetailVC") as? DetailVC {
-            dvc.navigationItem.title = "결과"
+            dvc.gifData = gifs[indexPath.item]
             navigationController?.pushViewController(dvc, animated: true)
         }
     }
@@ -218,15 +216,15 @@ extension SearchVC: UIScrollViewDelegate {
 // MARK:- WaterFallCollectionViewLayoutDelegate Extensions
 extension SearchVC: WaterFallCollectionViewLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForImageAtIndexPath indexPath: IndexPath) -> CGFloat {
-        return gifs[indexPath.item].gifHeight
+        return gifs[indexPath.item].fixedWidthDownsampledHeight
     }
 }
 
 // MARK:- CategoryTabBarDelegate Extensions
 extension SearchVC: CategoryTabBarDelegate {
     func touchUpTabButton(state: ImageState) {
+        searchState = state
         if let text = searchTextField.text, text.count > 0{
-            searchState = state
             updateResultFor(keyword: text)
         }
     }

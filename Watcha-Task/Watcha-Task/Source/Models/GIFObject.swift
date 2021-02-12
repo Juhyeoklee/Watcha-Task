@@ -13,17 +13,42 @@ struct GIFObject {
     var title: String
     var userName: String
     var userDisPlayName: String
+    var source: String
     var fixedWidthDownsampledURL: String
+    var fixedWidthDownsampledHeight: CGFloat
     var originalURL: String
-    var gifHeight: CGFloat
+    var originalHeight: CGFloat
     
     init() {
         id = ""
         title = ""
-        userDisPlayName = ""
         userName = ""
+        userDisPlayName = ""
+        source = ""
         fixedWidthDownsampledURL = ""
+        fixedWidthDownsampledHeight = 0
         originalURL = ""
-        gifHeight = 0
+        originalHeight = 0
+    }
+    
+    init(id: String,
+         title: String,
+         userDisPlayName: String,
+         userName: String,
+         source: String,
+         fixedWidthDownsampledURL: String,
+         fixedWidthDownsampledHeight: CGFloat,
+         originalURL: String,
+         originalHeight: CGFloat) {
+        
+        self.id = id
+        self.title = title
+        self.userDisPlayName = userDisPlayName
+        self.userName = userName
+        self.source = source
+        self.fixedWidthDownsampledURL = fixedWidthDownsampledURL
+        self.fixedWidthDownsampledHeight = fixedWidthDownsampledHeight
+        self.originalURL = originalURL
+        self.originalHeight = originalHeight
     }
 }
