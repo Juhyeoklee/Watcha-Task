@@ -17,10 +17,11 @@
 		A22DE86A25C8821E00F5B264 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DE86925C8821E00F5B264 /* SearchVC.swift */; };
 		A22DE86D25C8830F00F5B264 /* Favorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A22DE86C25C8830F00F5B264 /* Favorites.storyboard */; };
 		A22DE87025C8832000F5B264 /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DE86F25C8832000F5B264 /* FavoritesVC.swift */; };
+		A24989E525D6421D006ED773 /* AppData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A24989E325D6421D006ED773 /* AppData.xcdatamodeld */; };
+		A24989E925D65F5F006ED773 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24989E825D65F5F006ED773 /* DataManager.swift */; };
 		A26CBCFD25CBD66800B1E376 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26CBCFC25CBD66800B1E376 /* UIView+Extensions.swift */; };
 		A26CBD0225CBD6BF00B1E376 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26CBD0125CBD6BF00B1E376 /* UITextField+Extensions.swift */; };
 		A26CBD0625CBD72F00B1E376 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26CBD0525CBD72F00B1E376 /* UIImageView+Extensions.swift */; };
-		A26CBD0B25CBDA7600B1E376 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26CBD0A25CBDA7600B1E376 /* UserDefaultKeys.swift */; };
 		A26CBD1225CBE50900B1E376 /* GIFImageCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26CBD1125CBE50900B1E376 /* GIFImageCVCell.swift */; };
 		A26CBD1D25CC4E8E00B1E376 /* WaterFallCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26CBD1C25CC4E8E00B1E376 /* WaterFallCollectionViewLayout.swift */; };
 		A28A265825CD5CB20091F552 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A28A265725CD5CB20091F552 /* Detail.storyboard */; };
@@ -49,10 +50,11 @@
 		A22DE86925C8821E00F5B264 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		A22DE86C25C8830F00F5B264 /* Favorites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favorites.storyboard; sourceTree = "<group>"; };
 		A22DE86F25C8832000F5B264 /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
+		A24989E425D6421D006ED773 /* AppData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppData.xcdatamodel; sourceTree = "<group>"; };
+		A24989E825D65F5F006ED773 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A26CBCFC25CBD66800B1E376 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		A26CBD0125CBD6BF00B1E376 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		A26CBD0525CBD72F00B1E376 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
-		A26CBD0A25CBDA7600B1E376 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		A26CBD1125CBE50900B1E376 /* GIFImageCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFImageCVCell.swift; sourceTree = "<group>"; };
 		A26CBD1C25CC4E8E00B1E376 /* WaterFallCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterFallCollectionViewLayout.swift; sourceTree = "<group>"; };
 		A28A265725CD5CB20091F552 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
@@ -186,7 +188,7 @@
 		A26CBD0925CBDA5400B1E376 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				A26CBD0A25CBDA7600B1E376 /* UserDefaultKeys.swift */,
+				A24989E325D6421D006ED773 /* AppData.xcdatamodeld */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -231,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				A28A269525CDE2020091F552 /* GIFObject.swift */,
+				A24989E825D65F5F006ED773 /* DataManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -378,16 +381,17 @@
 				A28A267325CDDA060091F552 /* GiphyAPIService.swift in Sources */,
 				A22DE87025C8832000F5B264 /* FavoritesVC.swift in Sources */,
 				A2DBF0F825D05BA100AEDEED /* SearchState.swift in Sources */,
+				A24989E925D65F5F006ED773 /* DataManager.swift in Sources */,
 				A22DE83225C7E9CB00F5B264 /* AppDelegate.swift in Sources */,
 				A28A266E25CDD9CE0091F552 /* NetworkResult.swift in Sources */,
 				A22DE83425C7E9CB00F5B264 /* SceneDelegate.swift in Sources */,
 				A26CBD1225CBE50900B1E376 /* GIFImageCVCell.swift in Sources */,
+				A24989E525D6421D006ED773 /* AppData.xcdatamodeld in Sources */,
 				A28A266725CD653F0091F552 /* ProfileHeaderCollectionReusableView.swift in Sources */,
 				A28A266B25CDD8F40091F552 /* APIConstants.swift in Sources */,
 				A26CBD0625CBD72F00B1E376 /* UIImageView+Extensions.swift in Sources */,
 				A22DE86425C881D800F5B264 /* GiphyTabBarController.swift in Sources */,
 				A28A269625CDE2020091F552 /* GIFObject.swift in Sources */,
-				A26CBD0B25CBDA7600B1E376 /* UserDefaultKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +587,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A24989E325D6421D006ED773 /* AppData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A24989E425D6421D006ED773 /* AppData.xcdatamodel */,
+			);
+			currentVersion = A24989E425D6421D006ED773 /* AppData.xcdatamodel */;
+			path = AppData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A22DE82625C7E9CB00F5B264 /* Project object */;
 }

@@ -38,6 +38,9 @@
                                     <constraint firstAttribute="width" secondItem="WN8-PT-NqO" secondAttribute="height" multiplier="1:1" id="Qvf-s9-v8d"/>
                                 </constraints>
                                 <state key="normal" image="heart" catalog="system"/>
+                                <connections>
+                                    <action selector="touchUpLike:" destination="xEc-g2-OmZ" eventType="touchUpInside" id="O7o-Uh-fAg"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vhx-pR-yrk"/>

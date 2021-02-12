@@ -17,9 +17,8 @@ class GiphyTabBarController: UITabBarController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     // MARK:- Member Method

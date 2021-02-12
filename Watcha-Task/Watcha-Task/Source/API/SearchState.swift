@@ -7,6 +7,7 @@
 
 import Foundation
 
-enum ImageState {
-    case gif, sticker
+public enum ImageState: String {
+    case gif = "gif"
+    case sticker = "sticker"
 }

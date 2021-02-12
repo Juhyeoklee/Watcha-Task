@@ -40,6 +40,17 @@ class DetailVC: UIViewController {
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        print(DataManager.shared.fetchData(as: .gif))
+    }
+    // MARK:- IBAction Method
+    
+    @IBAction func touchUpLike(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        DataManager.shared.putLike(id: gifData?.id ?? "", state: .gif)
+        
+    }
+    
     private func bindData() {
         if let gif = gifData {
             navigationItem.title = gif.title
@@ -60,6 +71,8 @@ class DetailVC: UIViewController {
     }
     
     private func initLayout() {
+        
+        view.backgroundColor = .black
         if let gif = gifData {
             print(gif.originalHeight, gif.id)
             NSLayoutConstraint.activate([

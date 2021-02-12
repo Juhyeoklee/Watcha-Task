@@ -12,11 +12,17 @@ protocol CategoryTabBarDelegate {
 }
 
 class CategoryTabBarView: UIView {
+    
+    enum ColorStyle {
+        case white
+        case dark
+    }
     // MARK:- Layout
     private var gifButton: UIButton = {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("GIFs", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
         button.setTitleColor(.black, for: .normal)
         button.addTarget(self, action: #selector(touchUpGIFButton), for: .touchUpInside)
         return button
@@ -26,6 +32,7 @@ class CategoryTabBarView: UIView {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Sticker", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
         button.setTitleColor(.black, for: .normal)
         button.addTarget(self, action: #selector(touchUpStickerButton), for: .touchUpInside)
         return button
@@ -65,6 +72,7 @@ class CategoryTabBarView: UIView {
     }
     
     private func initLayout() {
+        
         self.addSubview(gifButton)
         self.addSubview(stickerButton)
         self.addSubview(indicatorBar)
@@ -117,4 +125,18 @@ class CategoryTabBarView: UIView {
         
         NSLayoutConstraint.activate(indicatorConstraint)
     }
+    
+    public func changeStyle(to style: ColorStyle) {
+        if style == .white {
+            backgroundColor = .white
+            gifButton.setTitleColor(.black, for: .normal)
+            stickerButton.setTitleColor(.black, for: .normal)
+        }
+        else {
+            backgroundColor = .black
+            gifButton.setTitleColor(.white, for: .normal)
+            stickerButton.setTitleColor(.white, for: .normal)
+        }
+    }
+    
 }
