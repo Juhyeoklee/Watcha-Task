@@ -29,6 +29,8 @@ class FavoritesVC: UIViewController {
         }
     }
     
+    var gifs: [GIFObject] = []
+    var imageState: ImageState = .gif
     var gifImageSizes: [CGFloat] = [100, 200, 50, 30, 90, 100, 100, 200, 300, 150, 200, 300, 100, 200, 300]
     
     // MARK:- LifeCycle Method
@@ -37,8 +39,15 @@ class FavoritesVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.navigationItem.title = "Favorites"
+        tabBarController?.navigationItem.title = "Favorites"
     }
+    
+    // MARK:- Member Method
+    private func fetchLikeIDs() {
+        var ids = DataManager.shared.fetchData(as: imageState)
+        
+    }
+    
 }
 
 extension FavoritesVC: UICollectionViewDelegate {
@@ -63,29 +72,7 @@ extension FavoritesVC: UICollectionViewDataSource {
         cell.backgroundColor = .black
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        print(indexPath)
-        
-        
-        if kind == UICollectionView.elementKindSectionHeader {
-            if let header = collectionView
-                .dequeueReusableSupplementaryView(ofKind: kind,
-                                                  withReuseIdentifier: ProfileHeaderCollectionReusableView.identifier,
-                                                  for: indexPath) as? ProfileHeaderCollectionReusableView {
-                return header
-            }
-        }
-        return UICollectionReusableView()
-    }
-    
 }
-
-//extension FavoritesVC: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        return CGSize(width: collectionView.frame.width, height: 200)
-//    }
-//}
 
 // MARK:- WaterFallCollectionViewLayoutDelegate Extensions
 extension FavoritesVC: WaterFallCollectionViewLayoutDelegate {

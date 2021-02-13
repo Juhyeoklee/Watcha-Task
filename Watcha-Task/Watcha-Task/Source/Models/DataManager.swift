@@ -93,7 +93,6 @@ public class DataManager {
             
             do {
                 try self.context.save()
-                print("좋아요 성공")
                 return true
                 
             } catch {

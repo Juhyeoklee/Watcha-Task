@@ -12,6 +12,8 @@ struct APIConstants {
     
     static let baseURL = "http://api.giphy.com/v1"
     
+    static let gifURL = baseURL + "/gifs"
     static let gifSearchURL = baseURL + "/gifs/search"
     static let stickerSearchURL = baseURL + "/stickers/search"
+    
 }
