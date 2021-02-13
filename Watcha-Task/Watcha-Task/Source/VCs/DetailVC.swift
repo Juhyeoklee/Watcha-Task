@@ -25,8 +25,8 @@ class DetailVC: UIViewController {
     }()
     
     // MARK:- Member Variation
-    public var gifData: GIFObject?
-    
+    public var gifData: GIFObject!
+    public var imageState: ImageState!
     
     // MARK:- LifeCycle Method
     override func viewDidLoad() {
@@ -36,45 +36,20 @@ class DetailVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        print(DataManager.shared.fetchData(as: .gif))
-    }
     // MARK:- IBAction Method
-    
     @IBAction func touchUpLike(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        DataManager.shared.putLike(id: gifData?.id ?? "", state: .gif)
         
-    }
-    
-    private func bindData() {
-        if let gif = gifData {
-            navigationItem.title = gif.title
-            if gif.userName.count != 0 {
-                displayNameLabel.text = gif.userDisPlayName
-                userNameLabel.text = "@" + gif.userName
-
-            }
-            else {
-                displayNameLabel.text = "Source"
-                userNameLabel.text = gif.source
-            }
-            
-            gifImageView.imageFromUrl(gif.originalURL) {
-                self.loadingView.stopAnimating()
-            }
+        if DataManager.shared.putLike(id: gifData?.id ?? "", state: imageState) {
+            sender.isSelected = !sender.isSelected
         }
     }
     
+    // MARK:- Member Method
     private func initLayout() {
         
         view.backgroundColor = .black
         if let gif = gifData {
-            print(gif.originalHeight, gif.id)
             NSLayoutConstraint.activate([
                 gifImageView.heightAnchor.constraint(equalToConstant: gif.originalHeight)
             ])
@@ -90,4 +65,30 @@ class DetailVC: UIViewController {
         
         loadingView.startAnimating()
     }
+    
+    private func bindData() {
+        
+        navigationItem.title = gifData.title
+        if gifData.userName.count != 0 {
+            displayNameLabel.text = gifData.userDisPlayName
+            userNameLabel.text = "@" + gifData.userName
+            
+        }
+        else {
+            displayNameLabel.text = "Source"
+            userNameLabel.text = gifData.source
+        }
+        
+        gifImageView.imageFromUrl(gifData.originalURL) {
+            self.loadingView.stopAnimating()
+        }
+        
+        heartButton.isSelected = isLikeImage()
+        
+    }
+    
+    private func isLikeImage() -> Bool {
+        return DataManager.shared.isAlreadyLike(id: gifData.id)
+    }
+
 }

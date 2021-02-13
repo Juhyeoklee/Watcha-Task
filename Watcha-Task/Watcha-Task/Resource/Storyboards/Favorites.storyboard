@@ -44,6 +44,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="categoryTabBarView" destination="6Ta-LB-qK5" id="NgZ-1v-pje"/>
                         <outlet property="favoritesCollectionView" destination="kOT-dB-RAc" id="Rje-3O-GVU"/>
                     </connections>
                 </viewController>

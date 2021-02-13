@@ -38,6 +38,7 @@
                                     <constraint firstAttribute="width" secondItem="WN8-PT-NqO" secondAttribute="height" multiplier="1:1" id="Qvf-s9-v8d"/>
                                 </constraints>
                                 <state key="normal" image="heart" catalog="system"/>
+                                <state key="selected" image="heart.fill" catalog="system"/>
                                 <connections>
                                     <action selector="touchUpLike:" destination="xEc-g2-OmZ" eventType="touchUpInside" id="O7o-Uh-fAg"/>
                                 </connections>
@@ -75,6 +76,7 @@
     </scenes>
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

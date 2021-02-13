@@ -86,7 +86,9 @@ class SearchVC: UIViewController {
     }
     
     
-    private func searchFor(keyword: String, limit: Int, completion: @escaping ([GIFObject])->()) {
+    private func searchFor(keyword: String,
+                           limit: Int,
+                           completion: @escaping ([GIFObject]) -> Void) {
         
         GiphyAPIService.shared.search(for: keyword,
                                       limit: limit,
@@ -197,6 +199,7 @@ extension SearchVC: UICollectionViewDelegate {
         if let dvc = UIStoryboard(name: "Detail", bundle: nil)
             .instantiateViewController(identifier: "DetailVC") as? DetailVC {
             dvc.gifData = gifs[indexPath.item]
+            dvc.imageState = searchState
             navigationController?.pushViewController(dvc, animated: true)
         }
     }

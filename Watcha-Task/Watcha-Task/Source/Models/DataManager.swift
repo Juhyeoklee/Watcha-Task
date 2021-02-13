@@ -32,7 +32,7 @@ public class DataManager {
             let request: NSFetchRequest = Likes.fetchRequest()
             request.predicate = NSPredicate(format: "i_State == %@", state.rawValue)
             let images = try context.fetch(request)
-            result = images.compactMap{ return $0.i_ID }
+            result = images.compactMap{ return $0.i_ID }.filter{ return $0.count != 0}
         }
         catch {
             return result
@@ -72,7 +72,6 @@ public class DataManager {
                 context.delete(result.first!)
                 
                 try context.save()
-                print("삭제 성공")
                 return true
             }
         }
