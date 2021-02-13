@@ -36,7 +36,7 @@
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hsP-Ar-MyU">
                                 <rect key="frame" x="0.0" y="155" width="375" height="623"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewLayout key="collectionViewLayout" id="uhi-fU-n30" customClass="WaterFallCollectionViewLayout" customModule="Watcha_Task" customModuleProvider="target"/>
                                 <cells/>
                             </collectionView>
@@ -49,7 +49,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3Wo-oS-Jkk"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="dxS-Sh-KHm" firstAttribute="leading" secondItem="3Wo-oS-Jkk" secondAttribute="leading" id="3Cn-B6-4Am"/>
                             <constraint firstItem="3Wo-oS-Jkk" firstAttribute="bottom" secondItem="hsP-Ar-MyU" secondAttribute="bottom" id="6Af-8C-qzm"/>
@@ -80,9 +80,6 @@
     </scenes>
     <resources>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

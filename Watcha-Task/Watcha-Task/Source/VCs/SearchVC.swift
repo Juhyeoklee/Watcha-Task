@@ -34,6 +34,7 @@ class SearchVC: UIViewController {
     @IBOutlet weak var categoryTabBarView: CategoryTabBarView! {
         didSet {
             categoryTabBarView.delegate = self
+            categoryTabBarView.changeStyle(to: .dark)
         }
     }
     
@@ -81,6 +82,7 @@ class SearchVC: UIViewController {
     // MARK:- Member Method
     private func layoutInit() {
         tabBarController?.navigationItem.title = "Search"
+        
         searchTextField.addLeftPadding(left: 20)
         searchTextField.makeRounded(cornerRadius: 20)
     }
@@ -96,27 +98,10 @@ class SearchVC: UIViewController {
                                       state: searchState) { networkResult in
             
             switch networkResult {
-            case .success(let data):
-                if let result = data as? JSON {
-                    self.resultTotalCount = result["pagination"]["total_count"].intValue
-                    let result: [GIFObject] = result["data"].arrayValue.compactMap {
-                        let user = $0["user"]
-                        let images = $0["images"]
-                        let sampleImage = images["fixed_width_downsampled"]
-                        let originalImage = images["original"]
-                        
-                        return GIFObject(id: $0["id"].stringValue,
-                                         title: $0["title"].stringValue,
-                                         userDisPlayName: user["display_name"].stringValue,
-                                         userName: user["username"].stringValue,
-                                         source: $0["source"].stringValue,
-                                         fixedWidthDownsampledURL: sampleImage["url"].stringValue,
-                                         fixedWidthDownsampledHeight: sampleImage["height"].floatValue.toCGFloat(),
-                                         originalURL: originalImage["url"].stringValue,
-                                         originalHeight: originalImage["height"].floatValue.toCGFloat())
-                    }
-                    
-                    completion(result)
+            case .success(let result):
+                if let result = result as? (Int, [GIFObject]) {
+                    self.resultOffset = result.0
+                    completion(result.1)
                 }
             case .requestErr(let msg):
                 print(msg as? String ?? "")

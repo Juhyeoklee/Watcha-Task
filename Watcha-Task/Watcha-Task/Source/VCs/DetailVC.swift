@@ -15,11 +15,13 @@ class DetailVC: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
     
     @IBOutlet weak var heartButton: UIButton!
+    
     var loadingView: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
         indicator.style = .large
+        indicator.color = .white
         indicator.translatesAutoresizingMaskIntoConstraints = false
-        indicator.backgroundColor = .gray
+        indicator.backgroundColor = .black
         indicator.hidesWhenStopped = true
         return indicator
     }()
@@ -48,7 +50,7 @@ class DetailVC: UIViewController {
     // MARK:- Member Method
     private func initLayout() {
         
-        view.backgroundColor = .black
+        
         if let gif = gifData {
             NSLayoutConstraint.activate([
                 gifImageView.heightAnchor.constraint(equalToConstant: gif.originalHeight)

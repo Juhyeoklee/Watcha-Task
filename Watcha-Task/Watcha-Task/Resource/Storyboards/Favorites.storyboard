@@ -19,7 +19,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kOT-dB-RAc">
                                 <rect key="frame" x="0.0" y="104" width="375" height="674"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewLayout key="collectionViewLayout" id="aOl-CF-3LO" customClass="WaterFallCollectionViewLayout" customModule="Watcha_Task" customModuleProvider="target"/>
                                 <cells/>
                             </collectionView>
@@ -32,7 +32,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RpE-pt-FUR"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6Ta-LB-qK5" firstAttribute="leading" secondItem="RpE-pt-FUR" secondAttribute="leading" id="CBy-IS-tio"/>
                             <constraint firstItem="RpE-pt-FUR" firstAttribute="bottom" secondItem="kOT-dB-RAc" secondAttribute="bottom" id="G3p-9S-Se3"/>

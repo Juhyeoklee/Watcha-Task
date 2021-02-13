@@ -55,7 +55,6 @@ struct GiphyAPIService {
     
     public func fetchLikeGIFData(ids: String,
                                  limit: Int = 10,
-                                 offset: Int = 0,
                                  completion: @escaping (NetworkResult<Any>) -> Void) {
         
         let url = APIConstants.gifURL
@@ -89,8 +88,6 @@ struct GiphyAPIService {
         
     }
     
-    
-    
     private func judgeData(_ statusCode: Int, data: Data) -> NetworkResult<Any> {
     
         guard let decodedData = try? JSON(data: data) else {
@@ -98,7 +95,7 @@ struct GiphyAPIService {
         }
         switch statusCode {
         case 200:
-            return .success(decodedData)
+            return .success(makeGIFObject(to: decodedData))
         case 400..<500:
             return .requestErr(decodedData["meta"]["msg"])
         default:
@@ -106,4 +103,27 @@ struct GiphyAPIService {
         }
     }
     
+    
+    private func makeGIFObject(to json: JSON) -> (Int, [GIFObject]) {
+        
+        let result: [GIFObject] = json["data"].arrayValue.compactMap {
+            let user = $0["user"]
+            let images = $0["images"]
+            let sampleImage = images["fixed_width_downsampled"]
+            let originalImage = images["original"]
+            
+            return GIFObject(id: $0["id"].stringValue,
+                             title: $0["title"].stringValue,
+                             userDisPlayName: user["display_name"].stringValue,
+                             userName: user["username"].stringValue,
+                             source: $0["source"].stringValue,
+                             fixedWidthDownsampledURL: sampleImage["url"].stringValue,
+                             fixedWidthDownsampledHeight: sampleImage["height"].floatValue.toCGFloat(),
+                             originalURL: originalImage["url"].stringValue,
+                             originalHeight: originalImage["height"].floatValue.toCGFloat())
+        }
+        let totalCount = json["pagination"]["total_count"].intValue
+        
+        return (totalCount ,result)
+    }
 }

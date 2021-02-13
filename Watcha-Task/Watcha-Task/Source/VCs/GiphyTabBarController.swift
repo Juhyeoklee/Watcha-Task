@@ -17,11 +17,21 @@ class GiphyTabBarController: UITabBarController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.shadowImage = UIImage()
+        layoutInit()
     }
     
     // MARK:- Member Method
+    private func layoutInit() {
+        navigationController?.navigationBar.barTintColor = .black
+        navigationController?.navigationBar.isTranslucent = false
+        
+        let textAttributes = [ NSAttributedString.Key.foregroundColor : UIColor.white ]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        
+        tabBar.barTintColor = .black
+        tabBar.isTranslucent = false
+    }
+    
     private func setTabs() {
         
         guard let searchVC = UIStoryboard(name: "Search", bundle: nil)

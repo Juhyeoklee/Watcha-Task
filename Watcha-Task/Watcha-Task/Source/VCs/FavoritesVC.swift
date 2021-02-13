@@ -27,6 +27,7 @@ class FavoritesVC: UIViewController {
     @IBOutlet weak var categoryTabBarView: CategoryTabBarView! {
         didSet {
             categoryTabBarView.delegate = self
+            categoryTabBarView.changeStyle(to: .dark)
         }
     }
     
@@ -56,10 +57,15 @@ class FavoritesVC: UIViewController {
     // MARK:- Member Method
     private func updateLikeIDsbyInAppData() {
         ids = DataManager.shared.fetchData(as: imageState)
+        resultTotalCount = ids.count
     }
     
     private func updateGIFData() {
         resultOffset = 0
+        
+        let lowerBounds = resultOffset
+        let upperBounds = resultOffset + initialLimit > ids.count ? ids.count : resultOffset + initialLimit
+        let ids = makeArrayToString(arr: makeRange(lowerBounds: lowerBounds, upperBounds: upperBounds))
         
         if ids.count == 0 {
             gifs = []
@@ -67,7 +73,7 @@ class FavoritesVC: UIViewController {
             return
         }
         
-        fetchGIFs(limit: initialLimit, offset: resultOffset) { [weak self] result in
+        fetchGIFs(ids: ids, limit: initialLimit) { [weak self] result in
             guard let self = self else { return }
             self.gifs = result
             self.resultOffset += self.initialLimit
@@ -77,8 +83,15 @@ class FavoritesVC: UIViewController {
     }
     
     private func appendGIFData() {
+        let lowerBounds = resultOffset
+        let upperBounds = resultOffset + paginationLimit > ids.count ? ids.count : resultOffset + paginationLimit
+        let ids = makeArrayToString(arr: makeRange(lowerBounds: lowerBounds, upperBounds: upperBounds))
         
-        fetchGIFs(limit: paginationLimit, offset: resultOffset) { [weak self] result in
+        if lowerBounds == upperBounds {
+            return
+        }
+        
+        fetchGIFs(ids: ids ,limit: paginationLimit) { [weak self] result in
             guard let self = self else { return }
             
             self.gifs.append(contentsOf: result)
@@ -99,35 +112,44 @@ class FavoritesVC: UIViewController {
         favoritesCollectionView.reloadData()
     }
     
+    private func makeRange(lowerBounds: Int, upperBounds: Int) -> [String] {
+        
+        return ids[lowerBounds..<upperBounds].map{ return $0 }
+    }
     
-    private func fetchGIFs(limit: Int,
-                           offset: Int,
+    private func fetchGIFs(ids: String
+                           ,limit: Int,
                            completion: @escaping ([GIFObject]) -> Void) {
-        GiphyAPIService.shared.fetchLikeGIFData(ids: makeArrayToString(arr: ids),
-                                                limit: limit,
-                                                offset: offset){ networkResult in
+        GiphyAPIService.shared.fetchLikeGIFData(ids: ids,
+                                                limit: limit){ networkResult in
             switch networkResult {
-            case .success(let json):
-                if let data = json as? JSON {
-                    let result:[GIFObject] = data["data"].arrayValue.compactMap {
-                        let user = $0["user"]
-                        let images = $0["images"]
-                        let sampleImage = images["fixed_width_downsampled"]
-                        let originalImage = images["original"]
-                        
-                        return GIFObject(id: $0["id"].stringValue,
-                                         title: $0["title"].stringValue,
-                                         userDisPlayName: user["display_name"].stringValue,
-                                         userName: user["username"].stringValue,
-                                         source: $0["source"].stringValue,
-                                         fixedWidthDownsampledURL: sampleImage["url"].stringValue,
-                                         fixedWidthDownsampledHeight: sampleImage["height"].floatValue.toCGFloat(),
-                                         originalURL: originalImage["url"].stringValue,
-                                         originalHeight: originalImage["height"].floatValue.toCGFloat())
-                    }
+            case .success(let result):
+                
+                if let result = result as? (Int, [GIFObject]) {
                     
-                    completion(result)
+                    completion(result.1)
                 }
+//
+//                if let data = json as? JSON {
+//                    let result:[GIFObject] = data["data"].arrayValue.compactMap {
+//                        let user = $0["user"]
+//                        let images = $0["images"]
+//                        let sampleImage = images["fixed_width_downsampled"]
+//                        let originalImage = images["original"]
+//
+//                        return GIFObject(id: $0["id"].stringValue,
+//                                         title: $0["title"].stringValue,
+//                                         userDisPlayName: user["display_name"].stringValue,
+//                                         userName: user["username"].stringValue,
+//                                         source: $0["source"].stringValue,
+//                                         fixedWidthDownsampledURL: sampleImage["url"].stringValue,
+//                                         fixedWidthDownsampledHeight: sampleImage["height"].floatValue.toCGFloat(),
+//                                         originalURL: originalImage["url"].stringValue,
+//                                         originalHeight: originalImage["height"].floatValue.toCGFloat())
+//                    }
+//
+//                    completion(result)
+//                }
             case .requestErr(let msg):
                 print(msg as? String ?? "")
             case .pathErr:
@@ -196,5 +218,15 @@ extension FavoritesVC: CategoryTabBarDelegate {
         imageState = state
         updateLikeIDsbyInAppData()
         updateGIFData()
+    }
+}
+
+// MARK:- UIScrollViewDelegate Extensions
+extension FavoritesVC: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if favoritesCollectionView.contentOffset.y + favoritesCollectionView.bounds.height ==
+            favoritesCollectionView.contentSize.height {
+            appendGIFData()
+        }
     }
 }
