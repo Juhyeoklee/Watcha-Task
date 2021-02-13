@@ -41,7 +41,8 @@ class CategoryTabBarView: UIView {
     private var indicatorBar: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .cyan
+        view.backgroundColor = .orange
+        view.makeRounded(cornerRadius: 20)
         return view
     }()
     
@@ -72,10 +73,10 @@ class CategoryTabBarView: UIView {
     }
     
     private func initLayout() {
-        
+        self.addSubview(indicatorBar)
         self.addSubview(gifButton)
         self.addSubview(stickerButton)
-        self.addSubview(indicatorBar)
+        
         
         NSLayoutConstraint.activate([
             gifButton.topAnchor.constraint(equalTo: topAnchor),
@@ -92,7 +93,7 @@ class CategoryTabBarView: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            indicatorBar.heightAnchor.constraint(equalToConstant: 5),
+            indicatorBar.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
             indicatorBar.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5)
         ])
         

@@ -19,12 +19,14 @@ class GIFImageCVCell: UICollectionViewCell {
     }()
     lazy var loadingIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
+        indicator.color = .white
         indicator.style = .large
-        indicator.backgroundColor = .gray
+        indicator.backgroundColor = .black
         indicator.hidesWhenStopped = true
         indicator.translatesAutoresizingMaskIntoConstraints = false
         return indicator
     }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initLayout()

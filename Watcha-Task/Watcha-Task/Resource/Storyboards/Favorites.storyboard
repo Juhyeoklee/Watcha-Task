@@ -18,16 +18,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kOT-dB-RAc">
-                                <rect key="frame" x="0.0" y="104" width="375" height="674"/>
+                                <rect key="frame" x="0.0" y="96" width="375" height="682"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewLayout key="collectionViewLayout" id="aOl-CF-3LO" customClass="WaterFallCollectionViewLayout" customModule="Watcha_Task" customModuleProvider="target"/>
                                 <cells/>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ta-LB-qK5" customClass="CategoryTabBarView" customModule="Watcha_Task" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="52"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="6Ta-LB-qK5" secondAttribute="height" multiplier="25:4" id="J1M-3w-VQ3"/>
+                                    <constraint firstAttribute="width" secondItem="6Ta-LB-qK5" secondAttribute="height" multiplier="375:52" id="J1M-3w-VQ3"/>
                                 </constraints>
                             </view>
                         </subviews>

@@ -29,6 +29,7 @@ class GiphyTabBarController: UITabBarController {
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         
         tabBar.barTintColor = .black
+        tabBar.tintColor = .white
         tabBar.isTranslucent = false
     }
     
