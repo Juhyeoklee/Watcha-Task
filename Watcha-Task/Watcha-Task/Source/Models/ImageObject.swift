@@ -7,8 +7,8 @@
 
 import UIKit
 
-// MARK: - GIFObject
-struct GIFObject {
+// MARK: - ImageObject
+struct ImageObject {
     var id: String
     var title: String
     var userName: String

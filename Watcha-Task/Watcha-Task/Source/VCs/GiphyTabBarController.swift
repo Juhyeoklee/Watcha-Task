@@ -15,34 +15,20 @@ class GiphyTabBarController: UITabBarController {
         
         setTabs()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        layoutInit()
-    }
-    
     // MARK:- Member Method
-    private func layoutInit() {
-        navigationController?.navigationBar.barTintColor = .black
-        navigationController?.navigationBar.isTranslucent = false
-        
-        let textAttributes = [ NSAttributedString.Key.foregroundColor : UIColor.white ]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
-        
-        tabBar.barTintColor = .black
-        tabBar.tintColor = .white
-        tabBar.isTranslucent = false
-    }
     
     private func setTabs() {
         
-        guard let searchVC = UIStoryboard(name: "Search", bundle: nil)
+        guard let searchVC = UIStoryboard
+                .search
                 .instantiateViewController(identifier: "SearchVC") as? SearchVC else {
             return
         }
         searchVC.title = "Search"
         searchVC.tabBarItem.image = UIImage(systemName: "magnifyingglass")
         
-        guard let favoritesVC = UIStoryboard(name: "Favorites", bundle: nil)
+        guard let favoritesVC = UIStoryboard
+                .favorites
                 .instantiateViewController(identifier: "FavoritesVC") as? FavoritesVC else {
             return
         }

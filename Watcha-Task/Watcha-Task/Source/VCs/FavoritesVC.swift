@@ -37,7 +37,7 @@ class FavoritesVC: UIViewController {
     let paginationLimit: Int = 10
     
     var ids: [String] = []
-    var gifs: [GIFObject] = []
+    var gifs: [ImageObject] = []
     var imageState: ImageState = .gif
     
     var resultOffset: Int = 0
@@ -64,8 +64,8 @@ class FavoritesVC: UIViewController {
         resultOffset = 0
         
         let lowerBounds = resultOffset
-        let upperBounds = resultOffset + initialLimit > ids.count ? ids.count : resultOffset + initialLimit
-        let ids = makeArrayToString(arr: makeRange(lowerBounds: lowerBounds, upperBounds: upperBounds))
+        let upperBounds = resultOffset + initialLimit < ids.count ? resultOffset + initialLimit : ids.count
+        let ids = makeRange(lowerBounds: lowerBounds, upperBounds: upperBounds)
         
         if ids.count == 0 {
             gifs = []
@@ -77,15 +77,18 @@ class FavoritesVC: UIViewController {
             guard let self = self else { return }
             self.gifs = result
             self.resultOffset += self.initialLimit
-            
+            if self.resultOffset > self.resultTotalCount {
+                self.resultOffset = self.resultTotalCount
+            }
             self.reloadCollectionView()
         }
     }
     
     private func appendGIFData() {
         let lowerBounds = resultOffset
-        let upperBounds = resultOffset + paginationLimit > ids.count ? ids.count : resultOffset + paginationLimit
-        let ids = makeArrayToString(arr: makeRange(lowerBounds: lowerBounds, upperBounds: upperBounds))
+        let upperBounds = resultOffset + paginationLimit < ids.count ? resultOffset + paginationLimit : ids.count
+        print(upperBounds, ids.count)
+        let ids = makeRange(lowerBounds: lowerBounds, upperBounds: upperBounds)
         
         if lowerBounds == upperBounds {
             return
@@ -112,44 +115,22 @@ class FavoritesVC: UIViewController {
         favoritesCollectionView.reloadData()
     }
     
-    private func makeRange(lowerBounds: Int, upperBounds: Int) -> [String] {
+    private func makeRange(lowerBounds: Int, upperBounds: Int) -> String {
         
-        return ids[lowerBounds..<upperBounds].map{ return $0 }
+        return makeArrayToString(arr: ids[lowerBounds..<upperBounds]
+                                    .map{ return $0 })
     }
     
     private func fetchGIFs(ids: String
                            ,limit: Int,
-                           completion: @escaping ([GIFObject]) -> Void) {
+                           completion: @escaping ([ImageObject]) -> Void) {
         GiphyAPIService.shared.fetchLikeGIFData(ids: ids,
                                                 limit: limit){ networkResult in
             switch networkResult {
             case .success(let result):
-                
-                if let result = result as? (Int, [GIFObject]) {
-                    
+                if let result = result as? (Int, [ImageObject]) {
                     completion(result.1)
                 }
-//
-//                if let data = json as? JSON {
-//                    let result:[GIFObject] = data["data"].arrayValue.compactMap {
-//                        let user = $0["user"]
-//                        let images = $0["images"]
-//                        let sampleImage = images["fixed_width_downsampled"]
-//                        let originalImage = images["original"]
-//
-//                        return GIFObject(id: $0["id"].stringValue,
-//                                         title: $0["title"].stringValue,
-//                                         userDisPlayName: user["display_name"].stringValue,
-//                                         userName: user["username"].stringValue,
-//                                         source: $0["source"].stringValue,
-//                                         fixedWidthDownsampledURL: sampleImage["url"].stringValue,
-//                                         fixedWidthDownsampledHeight: sampleImage["height"].floatValue.toCGFloat(),
-//                                         originalURL: originalImage["url"].stringValue,
-//                                         originalHeight: originalImage["height"].floatValue.toCGFloat())
-//                    }
-//
-//                    completion(result)
-//                }
             case .requestErr(let msg):
                 print(msg as? String ?? "")
             case .pathErr:
@@ -224,8 +205,9 @@ extension FavoritesVC: CategoryTabBarDelegate {
 // MARK:- UIScrollViewDelegate Extensions
 extension FavoritesVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if favoritesCollectionView.contentOffset.y + favoritesCollectionView.bounds.height ==
-            favoritesCollectionView.contentSize.height {
+        let currentOffsetMaxY = scrollView.contentOffset.y + scrollView.bounds.height
+        let loadingOffset = scrollView.contentSize.height
+        if currentOffsetMaxY == loadingOffset {
             appendGIFData()
         }
     }

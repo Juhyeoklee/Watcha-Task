@@ -41,9 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if !isValid {
                     _ = manager.delete(id: id)
                 }
-                else {
-                    print(id)
-                }
             }
         }
     }

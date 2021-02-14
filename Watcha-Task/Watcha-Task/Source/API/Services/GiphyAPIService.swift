@@ -138,15 +138,15 @@ struct GiphyAPIService {
         }
     }
     
-    private func makeGIFObject(to json: JSON) -> (Int, [GIFObject]) {
+    private func makeGIFObject(to json: JSON) -> (Int, [ImageObject]) {
         
-        let result: [GIFObject] = json["data"].arrayValue.compactMap {
+        let result: [ImageObject] = json["data"].arrayValue.compactMap {
             let user = $0["user"]
             let images = $0["images"]
             let sampleImage = images["fixed_width_downsampled"]
             let originalImage = images["original"]
             
-            return GIFObject(id: $0["id"].stringValue,
+            return ImageObject(id: $0["id"].stringValue,
                              title: $0["title"].stringValue,
                              userDisPlayName: user["display_name"].stringValue,
                              userName: user["username"].stringValue,

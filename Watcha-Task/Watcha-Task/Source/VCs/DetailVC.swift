@@ -16,7 +16,10 @@ class DetailVC: UIViewController {
     
     @IBOutlet weak var heartButton: UIButton!
     
-    var loadingView: UIActivityIndicatorView = {
+    @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
+    
+    // MARK:- Layout Variation
+    lazy var loadingView: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
         indicator.style = .large
         indicator.color = .white
@@ -27,7 +30,7 @@ class DetailVC: UIViewController {
     }()
     
     // MARK:- Member Variation
-    public var gifData: GIFObject!
+    public var gifData: ImageObject!
     public var imageState: ImageState!
     
     // MARK:- LifeCycle Method
@@ -42,7 +45,8 @@ class DetailVC: UIViewController {
     // MARK:- IBAction Method
     @IBAction func touchUpLike(_ sender: UIButton) {
         
-        if DataManager.shared.putLike(id: gifData?.id ?? "", state: imageState) {
+        if DataManager.shared.putLike(id: gifData?.id ?? "",
+                                      state: imageState) {
             sender.isSelected = !sender.isSelected
         }
     }
@@ -50,11 +54,11 @@ class DetailVC: UIViewController {
     // MARK:- Member Method
     private func initLayout() {
         
+        heartButton.tintColor = .pointColor
+        navigationController?.navigationBar.tintColor = .pointColor
         
         if let gif = gifData {
-            NSLayoutConstraint.activate([
-                gifImageView.heightAnchor.constraint(equalToConstant: gif.originalHeight)
-            ])
+            imageHeightConstraint.constant = gif.originalHeight < 500 ? gif.originalHeight : 500
         }
         view.addSubview(loadingView)
         
@@ -71,10 +75,10 @@ class DetailVC: UIViewController {
     private func bindData() {
         
         navigationItem.title = gifData.title
+        print(gifData.userName, gifData.source)
         if gifData.userName.count != 0 {
             displayNameLabel.text = gifData.userDisPlayName
             userNameLabel.text = "@" + gifData.userName
-            
         }
         else {
             displayNameLabel.text = "Source"

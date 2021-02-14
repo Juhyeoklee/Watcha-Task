@@ -29,10 +29,12 @@
 		A28A266B25CDD8F40091F552 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A266A25CDD8F40091F552 /* APIConstants.swift */; };
 		A28A266E25CDD9CE0091F552 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A266D25CDD9CE0091F552 /* NetworkResult.swift */; };
 		A28A267325CDDA060091F552 /* GiphyAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A267225CDDA060091F552 /* GiphyAPIService.swift */; };
-		A28A269625CDE2020091F552 /* GIFObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A269525CDE2020091F552 /* GIFObject.swift */; };
+		A28A269625CDE2020091F552 /* ImageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A269525CDE2020091F552 /* ImageObject.swift */; };
 		A2DBF0F425CEF79500AEDEED /* Float+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DBF0F325CEF79500AEDEED /* Float+Extensions.swift */; };
 		A2DBF0F825D05BA100AEDEED /* SearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DBF0F725D05BA100AEDEED /* SearchState.swift */; };
 		A2DBF10025D19F3C00AEDEED /* CategoryTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DBF0FF25D19F3C00AEDEED /* CategoryTabBarView.swift */; };
+		A2FD123225D92F11002CBAAA /* UIStoryboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FD123125D92F11002CBAAA /* UIStoryboard+Extensions.swift */; };
+		A2FD123525D93240002CBAAA /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FD123425D93240002CBAAA /* UIColor+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,10 +63,12 @@
 		A28A266A25CDD8F40091F552 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		A28A266D25CDD9CE0091F552 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		A28A267225CDDA060091F552 /* GiphyAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyAPIService.swift; sourceTree = "<group>"; };
-		A28A269525CDE2020091F552 /* GIFObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFObject.swift; sourceTree = "<group>"; };
+		A28A269525CDE2020091F552 /* ImageObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageObject.swift; sourceTree = "<group>"; };
 		A2DBF0F325CEF79500AEDEED /* Float+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extensions.swift"; sourceTree = "<group>"; };
 		A2DBF0F725D05BA100AEDEED /* SearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchState.swift; sourceTree = "<group>"; };
 		A2DBF0FF25D19F3C00AEDEED /* CategoryTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTabBarView.swift; sourceTree = "<group>"; };
+		A2FD123125D92F11002CBAAA /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extensions.swift"; sourceTree = "<group>"; };
+		A2FD123425D93240002CBAAA /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		EBD3D52B76689EE277B530FD /* Pods-Watcha-Task.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Watcha-Task.debug.xcconfig"; path = "Target Support Files/Pods-Watcha-Task/Pods-Watcha-Task.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,12 +122,12 @@
 		A22DE84625C7EF9B00F5B264 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				A2DBF0FE25D19EFF00AEDEED /* Views */,
-				A28A267525CDDB410091F552 /* Models */,
 				A28A266925CDD8E40091F552 /* API */,
-				A26CBD1A25CC4E1A00B1E376 /* CustomViews */,
 				A26CBD1025CBE46500B1E376 /* Cells */,
+				A26CBD1A25CC4E1A00B1E376 /* Customs */,
+				A28A267525CDDB410091F552 /* Models */,
 				A22DE84925C7F00000F5B264 /* VCs */,
+				A2DBF0FE25D19EFF00AEDEED /* Views */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -143,10 +147,10 @@
 		A22DE84825C7EFE200F5B264 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				A22DE86625C881FA00F5B264 /* Search.storyboard */,
-				A22DE83C25C7E9CC00F5B264 /* LaunchScreen.storyboard */,
-				A22DE86C25C8830F00F5B264 /* Favorites.storyboard */,
 				A28A265725CD5CB20091F552 /* Detail.storyboard */,
+				A22DE86C25C8830F00F5B264 /* Favorites.storyboard */,
+				A22DE83C25C7E9CC00F5B264 /* LaunchScreen.storyboard */,
+				A22DE86625C881FA00F5B264 /* Search.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -154,10 +158,10 @@
 		A22DE84925C7F00000F5B264 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				A28A265A25CD5CFA0091F552 /* DetailVC.swift */,
+				A22DE86F25C8832000F5B264 /* FavoritesVC.swift */,
 				A22DE86325C881D800F5B264 /* GiphyTabBarController.swift */,
 				A22DE86925C8821E00F5B264 /* SearchVC.swift */,
-				A22DE86F25C8832000F5B264 /* FavoritesVC.swift */,
-				A28A265A25CD5CFA0091F552 /* DetailVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -165,8 +169,8 @@
 		A22DE84C25C872A300F5B264 /* Apps */ = {
 			isa = PBXGroup;
 			children = (
-				A22DE83125C7E9CB00F5B264 /* AppDelegate.swift */,
 				A22DE83F25C7E9CC00F5B264 /* Info.plist */,
+				A22DE83125C7E9CB00F5B264 /* AppDelegate.swift */,
 				A22DE83325C7E9CB00F5B264 /* SceneDelegate.swift */,
 			);
 			path = Apps;
@@ -175,10 +179,12 @@
 		A26CBCFB25CBD63C00B1E376 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A26CBCFC25CBD66800B1E376 /* UIView+Extensions.swift */,
-				A26CBD0125CBD6BF00B1E376 /* UITextField+Extensions.swift */,
-				A26CBD0525CBD72F00B1E376 /* UIImageView+Extensions.swift */,
 				A2DBF0F325CEF79500AEDEED /* Float+Extensions.swift */,
+				A26CBD0525CBD72F00B1E376 /* UIImageView+Extensions.swift */,
+				A26CBD0125CBD6BF00B1E376 /* UITextField+Extensions.swift */,
+				A26CBCFC25CBD66800B1E376 /* UIView+Extensions.swift */,
+				A2FD123125D92F11002CBAAA /* UIStoryboard+Extensions.swift */,
+				A2FD123425D93240002CBAAA /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -199,12 +205,12 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		A26CBD1A25CC4E1A00B1E376 /* CustomViews */ = {
+		A26CBD1A25CC4E1A00B1E376 /* Customs */ = {
 			isa = PBXGroup;
 			children = (
 				A26CBD1C25CC4E8E00B1E376 /* WaterFallCollectionViewLayout.swift */,
 			);
-			path = CustomViews;
+			path = Customs;
 			sourceTree = "<group>";
 		};
 		A28A266925CDD8E40091F552 /* API */ = {
@@ -229,7 +235,7 @@
 		A28A267525CDDB410091F552 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A28A269525CDE2020091F552 /* GIFObject.swift */,
+				A28A269525CDE2020091F552 /* ImageObject.swift */,
 				A24989E825D65F5F006ED773 /* DataManager.swift */,
 			);
 			path = Models;
@@ -374,6 +380,7 @@
 				A28A265B25CD5CFA0091F552 /* DetailVC.swift in Sources */,
 				A26CBCFD25CBD66800B1E376 /* UIView+Extensions.swift in Sources */,
 				A2DBF0F425CEF79500AEDEED /* Float+Extensions.swift in Sources */,
+				A2FD123225D92F11002CBAAA /* UIStoryboard+Extensions.swift in Sources */,
 				A22DE86A25C8821E00F5B264 /* SearchVC.swift in Sources */,
 				A28A267325CDDA060091F552 /* GiphyAPIService.swift in Sources */,
 				A22DE87025C8832000F5B264 /* FavoritesVC.swift in Sources */,
@@ -386,8 +393,9 @@
 				A24989E525D6421D006ED773 /* AppData.xcdatamodeld in Sources */,
 				A28A266B25CDD8F40091F552 /* APIConstants.swift in Sources */,
 				A26CBD0625CBD72F00B1E376 /* UIImageView+Extensions.swift in Sources */,
+				A2FD123525D93240002CBAAA /* UIColor+Extensions.swift in Sources */,
 				A22DE86425C881D800F5B264 /* GiphyTabBarController.swift in Sources */,
-				A28A269625CDE2020091F552 /* GIFObject.swift in Sources */,
+				A28A269625CDE2020091F552 /* ImageObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

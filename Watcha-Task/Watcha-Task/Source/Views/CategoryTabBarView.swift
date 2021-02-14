@@ -41,7 +41,7 @@ class CategoryTabBarView: UIView {
     private var indicatorBar: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .orange
+        view.backgroundColor = .pointColor
         view.makeRounded(cornerRadius: 20)
         return view
     }()

@@ -40,11 +40,15 @@ class SearchVC: UIViewController {
     
     
     // MARK:- Member Variation
-    var indicatorBar: UIView = {
-        let view = UIView()
-        view.backgroundColor = .cyan
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+    lazy var emptyView: UILabel = {
+        let label = UILabel()
+        label.text = "Empty Result"
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 20)
+        label.textColor = .gray
+        label.isHidden = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
 
     let initialLimit: Int = 15
@@ -52,7 +56,7 @@ class SearchVC: UIViewController {
     
     var searchState: ImageState = .gif
     
-    var gifs: [GIFObject] = [] {
+    var gifs: [ImageObject] = [] {
         didSet {
             reloadCollectionView()
         }
@@ -82,25 +86,33 @@ class SearchVC: UIViewController {
     // MARK:- Member Method
     private func layoutInit() {
         tabBarController?.navigationItem.title = "Search"
-        
+        searchButton.tintColor = .pointColor
         searchTextField.addLeftPadding(left: 20)
         searchTextField.makeRounded(cornerRadius: 20)
+        
+        view.addSubview(emptyView)
+        NSLayoutConstraint.activate([
+            emptyView.leadingAnchor.constraint(equalTo: searchResultCollectionView.leadingAnchor),
+            emptyView.trailingAnchor.constraint(equalTo: searchResultCollectionView.trailingAnchor),
+            emptyView.topAnchor.constraint(equalTo: searchResultCollectionView.topAnchor),
+            emptyView.bottomAnchor.constraint(equalTo: searchResultCollectionView.bottomAnchor)
+        ])
     }
     
     
     private func searchFor(keyword: String,
                            limit: Int,
-                           completion: @escaping ([GIFObject]) -> Void) {
+                           completion: @escaping ([ImageObject]) -> Void) {
         
         GiphyAPIService.shared.search(for: keyword,
                                       limit: limit,
                                       offset: resultOffset,
                                       state: searchState) { networkResult in
-            
+        
             switch networkResult {
             case .success(let result):
-                if let result = result as? (Int, [GIFObject]) {
-                    self.resultOffset = result.0
+                if let result = result as? (Int, [ImageObject]) {
+                    self.resultTotalCount = result.0
                     completion(result.1)
                 }
             case .requestErr(let msg):
@@ -118,14 +130,23 @@ class SearchVC: UIViewController {
     private func updateResultFor(keyword: String) {
         self.keyword = keyword
         resultOffset = 0
-        searchFor(keyword: keyword, limit: initialLimit) { (result) in
+        searchFor(keyword: keyword, limit: initialLimit) { [weak self] result in
+            guard let self = self else { return }
             self.gifs = result
+            
+            if self.gifs.count == 0 {
+                self.setEmptyView(state: true)
+            }
+            else {
+                self.setEmptyView(state: false)
+            }
             self.resultOffset += self.initialLimit
         }
     }
     
     private func appendResultFor() {
-        searchFor(keyword: self.keyword, limit: paginationLimit) { (result) in
+        searchFor(keyword: self.keyword, limit: paginationLimit) { [weak self] result in
+            guard let self = self else { return }
             self.gifs.append(contentsOf: result)
             self.resultOffset += self.paginationLimit
             
@@ -141,6 +162,10 @@ class SearchVC: UIViewController {
         }
         
         searchResultCollectionView.reloadData()
+    }
+    
+    private func setEmptyView(state: Bool) {
+        emptyView.isHidden = !state
     }
 }
 
@@ -181,7 +206,8 @@ extension SearchVC: UICollectionViewDataSource {
 extension SearchVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        if let dvc = UIStoryboard(name: "Detail", bundle: nil)
+        if let dvc = UIStoryboard
+            .detail
             .instantiateViewController(identifier: "DetailVC") as? DetailVC {
             dvc.gifData = gifs[indexPath.item]
             dvc.imageState = searchState
@@ -193,8 +219,10 @@ extension SearchVC: UICollectionViewDelegate {
 // MARK:- UIScrollViewDelegate Extensions
 extension SearchVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if searchResultCollectionView.contentOffset.y + searchResultCollectionView.bounds.height ==
-            searchResultCollectionView.contentSize.height {
+        let currentOffsetMaxY = scrollView.contentOffset.y + scrollView.bounds.height
+        let loadingOffset = scrollView.contentSize.height
+        
+        if currentOffsetMaxY == loadingOffset {
             appendResultFor()
         }
     }

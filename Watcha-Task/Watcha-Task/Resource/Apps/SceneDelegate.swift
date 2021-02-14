@@ -19,8 +19,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
     
         let window = UIWindow(windowScene: windowScene)
+        
         let navi: UINavigationController = {
-            let naviVC = UINavigationController(rootViewController: GiphyTabBarController())
+            
+            
+            let tabbarC: GiphyTabBarController = {
+                let controller = GiphyTabBarController()
+                controller.tabBar.barTintColor = .black
+                controller.tabBar.tintColor = .pointColor
+                controller.tabBar.isTranslucent = false
+                return controller
+            }()
+            
+            let naviVC = UINavigationController(rootViewController: tabbarC)
+            naviVC.navigationBar.barTintColor = .black
+            naviVC.navigationBar.isTranslucent = false
+            
+            let textAttributes = [ NSAttributedString.Key.foregroundColor : UIColor.white ]
+            naviVC.navigationBar.titleTextAttributes = textAttributes
+            
             return naviVC
         }()
         
