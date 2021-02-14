@@ -60,16 +60,16 @@ class DetailVC: UIViewController {
         if let gif = gifData {
             imageHeightConstraint.constant = gif.originalHeight < 500 ? gif.originalHeight : 500
         }
-        view.addSubview(loadingView)
+//        view.addSubview(loadingView)
+//
+//        NSLayoutConstraint.activate([
+//            loadingView.leadingAnchor.constraint(equalTo: gifImageView.leadingAnchor),
+//            loadingView.trailingAnchor.constraint(equalTo: gifImageView.trailingAnchor),
+//            loadingView.topAnchor.constraint(equalTo: gifImageView.topAnchor),
+//            loadingView.bottomAnchor.constraint(equalTo: gifImageView.bottomAnchor)
+//        ])
         
-        NSLayoutConstraint.activate([
-            loadingView.leadingAnchor.constraint(equalTo: gifImageView.leadingAnchor),
-            loadingView.trailingAnchor.constraint(equalTo: gifImageView.trailingAnchor),
-            loadingView.topAnchor.constraint(equalTo: gifImageView.topAnchor),
-            loadingView.bottomAnchor.constraint(equalTo: gifImageView.bottomAnchor)
-        ])
-        
-        loadingView.startAnimating()
+//        loadingView.startAnimating()
     }
     
     private func bindData() {
@@ -84,10 +84,10 @@ class DetailVC: UIViewController {
             displayNameLabel.text = "Source"
             userNameLabel.text = gifData.source
         }
-        
-        gifImageView.imageFromUrl(gifData.originalURL) {
-            self.loadingView.stopAnimating()
-        }
+        gifImageView.setImage(with: gifData.originalURL)
+//        gifImageView.imageFromUrl(gifData.originalURL) {
+//            self.loadingView.stopAnimating()
+//        }
         
         heartButton.isSelected = isLikeImage()
     }
