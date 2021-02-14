@@ -1,5 +1,9 @@
 # Watcha-Task
 
+## 개발 환경
+- Xcode 12.4
+- Swift 5.3
+
 ## 주요 클래스
 
 ### GiphyAPIService
