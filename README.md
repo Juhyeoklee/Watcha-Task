@@ -9,9 +9,6 @@
 ### DataManager
 - CoreData를 관리하는 Class
 
-### ImageObject
-- API를 통해 받아온 json
-
 ## 사용 오픈소스
 
 ```
