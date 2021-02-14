@@ -75,7 +75,7 @@ class DetailVC: UIViewController {
     private func bindData() {
         
         navigationItem.title = gifData.title
-        print(gifData.userName, gifData.source)
+        
         if gifData.userName.count != 0 {
             displayNameLabel.text = gifData.userDisPlayName
             userNameLabel.text = "@" + gifData.userName
@@ -90,7 +90,6 @@ class DetailVC: UIViewController {
         }
         
         heartButton.isSelected = isLikeImage()
-        
     }
     
     private func isLikeImage() -> Bool {
