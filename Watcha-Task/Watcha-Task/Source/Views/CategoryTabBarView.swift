@@ -139,5 +139,4 @@ class CategoryTabBarView: UIView {
             stickerButton.setTitleColor(.white, for: .normal)
         }
     }
-    
 }

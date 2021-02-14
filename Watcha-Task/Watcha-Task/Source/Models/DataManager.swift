@@ -25,6 +25,19 @@ public class DataManager {
     var context: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
+    
+    public func fetchAllData() -> [String] {
+        var result: [String] = []
+        do {
+            let request: NSFetchRequest = Likes.fetchRequest()
+            let images = try context.fetch(request)
+            result = images.compactMap{ return $0.i_ID }.filter{ return $0.count != 0}
+        }
+        catch {
+            return result
+        }
+        return result
+    }
 
     public func fetchData(as state: ImageState) -> [String] {
         var result: [String] = []
@@ -59,10 +72,10 @@ public class DataManager {
     
     public func putLike(id: String, state: ImageState) -> Bool {
         
-        return isAlreadyLike(id: id) ? delete(id: id, state: state) : save(id: id, state: state)
+        return isAlreadyLike(id: id) ? delete(id: id) : save(id: id, state: state)
     }
     
-    private func delete(id: String, state: ImageState) -> Bool {
+    public func delete(id: String) -> Bool {
         do {
             let request: NSFetchRequest = Likes.fetchRequest()
             request.predicate = NSPredicate(format: "i_ID == %@", id)

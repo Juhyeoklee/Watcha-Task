@@ -13,6 +13,41 @@ import SwiftyJSON
 struct GiphyAPIService {
     static let shared = GiphyAPIService()
     
+    public func isValidData(id: String, completion: @escaping (Bool) -> Void) {
+        let url = APIConstants.gifURL + "/\(id)"
+        
+        let parameter: Parameters = [
+            "api_key" : APIConstants.key
+        ]
+        
+        let dataRequest = AF.request(url,
+                                     method: .get,
+                                     parameters: parameter,
+                                     encoding: URLEncoding.default)
+        
+        dataRequest.responseData { response in
+            switch response.result {
+            case .success:
+                guard let statusCode = response.response?.statusCode else {
+                    return
+                }
+                
+                if statusCode == 200 {
+                    completion(true)
+                }
+                else if statusCode == 404 {
+                    completion(true)
+                }
+                else {
+                    print(statusCode)
+                }
+            case .failure(let err):
+                print(err)
+            }
+        }
+        
+    }
+    
     public func search(for keyword: String,
                        limit: Int = 10,
                        offset: Int = 0,
@@ -102,7 +137,6 @@ struct GiphyAPIService {
             return .pathErr
         }
     }
-    
     
     private func makeGIFObject(to json: JSON) -> (Int, [GIFObject]) {
         

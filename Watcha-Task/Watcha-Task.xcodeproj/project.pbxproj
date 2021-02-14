@@ -26,7 +26,6 @@
 		A26CBD1D25CC4E8E00B1E376 /* WaterFallCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26CBD1C25CC4E8E00B1E376 /* WaterFallCollectionViewLayout.swift */; };
 		A28A265825CD5CB20091F552 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A28A265725CD5CB20091F552 /* Detail.storyboard */; };
 		A28A265B25CD5CFA0091F552 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A265A25CD5CFA0091F552 /* DetailVC.swift */; };
-		A28A266725CD653F0091F552 /* ProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A266625CD653F0091F552 /* ProfileHeaderCollectionReusableView.swift */; };
 		A28A266B25CDD8F40091F552 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A266A25CDD8F40091F552 /* APIConstants.swift */; };
 		A28A266E25CDD9CE0091F552 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A266D25CDD9CE0091F552 /* NetworkResult.swift */; };
 		A28A267325CDDA060091F552 /* GiphyAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A267225CDDA060091F552 /* GiphyAPIService.swift */; };
@@ -59,7 +58,6 @@
 		A26CBD1C25CC4E8E00B1E376 /* WaterFallCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterFallCollectionViewLayout.swift; sourceTree = "<group>"; };
 		A28A265725CD5CB20091F552 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		A28A265A25CD5CFA0091F552 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
-		A28A266625CD653F0091F552 /* ProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		A28A266A25CDD8F40091F552 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		A28A266D25CDD9CE0091F552 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		A28A267225CDDA060091F552 /* GiphyAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyAPIService.swift; sourceTree = "<group>"; };
@@ -205,7 +203,6 @@
 			isa = PBXGroup;
 			children = (
 				A26CBD1C25CC4E8E00B1E376 /* WaterFallCollectionViewLayout.swift */,
-				A28A266625CD653F0091F552 /* ProfileHeaderCollectionReusableView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -387,7 +384,6 @@
 				A22DE83425C7E9CB00F5B264 /* SceneDelegate.swift in Sources */,
 				A26CBD1225CBE50900B1E376 /* GIFImageCVCell.swift in Sources */,
 				A24989E525D6421D006ED773 /* AppData.xcdatamodeld in Sources */,
-				A28A266725CD653F0091F552 /* ProfileHeaderCollectionReusableView.swift in Sources */,
 				A28A266B25CDD8F40091F552 /* APIConstants.swift in Sources */,
 				A26CBD0625CBD72F00B1E376 /* UIImageView+Extensions.swift in Sources */,
 				A22DE86425C881D800F5B264 /* GiphyTabBarController.swift in Sources */,
