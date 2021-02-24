@@ -16,24 +16,16 @@ extension UIImageView {
                              options: [.transition(ImageTransition.fade(0.5))])
         }
     }
+    
     public func imageFromUrl(_ urlString: String,
                              completionHandler: @escaping () -> ()) {
         
-        let cache = ImageCache.default
-        cache.retrieveImage(forKey: urlString, options: nil) { (image, _) in
-            if let image = image {
-                self.image = image
-                completionHandler()
-            }
-            else {
-                let url = URL(string: urlString)
-                let resource = ImageResource(downloadURL: url!, cacheKey: urlString)
-                self.kf.setImage(with: resource,
-                                 options: [.transition(ImageTransition.fade(0.5))],
-                                 completionHandler:  { _ in
-                                    completionHandler()
-                                 })
-            }
+        if let url = URL(string: urlString) {
+            self.kf.setImage(with: url,
+                             options: [.transition(ImageTransition.fade(0.5))],
+                             completionHandler: { _ in
+                                completionHandler()
+                             })
         }
     }
 }

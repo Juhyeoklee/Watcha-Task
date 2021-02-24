@@ -4,6 +4,20 @@
 - Xcode 12.4
 - Swift 5.3
 
+## 구현 화면
+
+### 1. 검색
+![](https://media.giphy.com/media/XqanwxK8YmRAEEcNW5/giphy.gif)
+
+### 2. 상세화면
+
+![](https://media.giphy.com/media/RLglSPc2WME20uL9SF/giphy.gif)
+
+### 3. Favorites 화면
+
+![](https://media.giphy.com/media/5nFEHTYcCJQOu9lYA7/giphy.gif)
+
+
 ## 주요 클래스
 
 ### GiphyAPIService
